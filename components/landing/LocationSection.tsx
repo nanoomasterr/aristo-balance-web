@@ -1,10 +1,13 @@
 'use client';
 
 import React from 'react';
-import { MapPin, Clock, Phone, Navigation, MessageCircle } from 'lucide-react';
+import { MapPin, Clock, Phone, Navigation, MessageCircle, Star, ExternalLink } from 'lucide-react';
 
 export default function LocationSection() {
-  const whatsappUrl = 'https://wa.me/6282118433016?text=Halo%20AristoBalance,%20saya%20ingin%20tanya%20jadwal%20terapi';
+  const googleMapsUrl =
+    'https://www.google.com/search?kgmid=/g/11v_3nbsj4&hl=id-ID&q=Kretek+Sendi+Aristobalance';
+  const whatsappUrl =
+    'https://wa.me/6282118433016?text=Halo%20AristoBalance,%20saya%20ingin%20tanya%20jadwal%20terapi';
 
   return (
     <section id="lokasi" className="py-20 bg-[#F8FAFC] border-t border-slate-200/80 relative">
@@ -13,14 +16,21 @@ export default function LocationSection() {
           {/* Left Details */}
           <div className="lg:col-span-6 space-y-6">
             <div>
-              <span className="text-xs font-black uppercase tracking-widest text-[#008080] bg-teal-50 border border-teal-200/80 px-4 py-1.5 rounded-full inline-block mb-3">
-                LOKASI PRAKTIK & OPERASIONAL
-              </span>
+              <div className="flex items-center gap-2 mb-3">
+                <span className="text-xs font-black uppercase tracking-widest text-[#008080] bg-teal-50 border border-teal-200/80 px-4 py-1.5 rounded-full inline-block">
+                  LOKASI PRAKTIK & OPERASIONAL
+                </span>
+                <span className="inline-flex items-center gap-1 bg-amber-50 text-amber-800 border border-amber-200 text-xs font-bold px-3 py-1 rounded-full">
+                  <Star className="w-3 h-3 fill-amber-500 text-amber-500" />
+                  5.0 di Google
+                </span>
+              </div>
+
               <h2 className="text-3xl sm:text-4xl font-black text-slate-900 tracking-tight">
-                Kunjungi AristoBalance Cimahi
+                Kretek Sendi AristoBalance Cimahi
               </h2>
               <p className="text-slate-600 text-sm mt-2 leading-relaxed">
-                Tempat praktik kami bersih, tenang, dan mudah diakses di pusat Kota Cimahi.
+                Lokasi praktik nyaman, bersih, dan mudah diakses di pusat Kota Cimahi (Dekat Padasuka).
               </p>
             </div>
 
@@ -47,6 +57,9 @@ export default function LocationSection() {
                   <p className="text-slate-600 text-xs mt-1">
                     Senin – Minggu: <strong>09.00 – 22.00 WIB</strong>
                   </p>
+                  <p className="text-[11px] text-slate-400 mt-0.5">
+                    *Wajib melakukan reservasi jadwal terlebih dahulu
+                  </p>
                 </div>
               </div>
 
@@ -55,7 +68,7 @@ export default function LocationSection() {
                   <Phone className="w-5 h-5" />
                 </div>
                 <div>
-                  <h4 className="font-bold text-slate-900 text-sm">Kontak & WhatsApp Reservasi</h4>
+                  <h4 className="font-bold text-slate-900 text-sm">Hotline WhatsApp Reservasi</h4>
                   <p className="text-slate-600 text-xs mt-1 font-semibold text-emerald-800">
                     • 0821-1843-3016
                   </p>
@@ -66,20 +79,20 @@ export default function LocationSection() {
             {/* Action Buttons */}
             <div className="flex flex-wrap items-center gap-3 pt-2">
               <a
-                href="https://maps.google.com/?q=AristoBalance+Terapi+Otot+Tulang+Cimahi"
+                href={googleMapsUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 bg-[#0F4C5C] hover:bg-[#0A333E] text-white text-xs font-bold px-6 py-3.5 rounded-xl shadow-md transition"
+                className="inline-flex items-center gap-2 bg-[#0F4C5C] hover:bg-[#0A333E] text-white text-xs font-bold px-6 py-3.5 rounded-xl shadow-md transition hover:scale-105"
               >
                 <Navigation className="w-4 h-4" />
-                <span>Buka Rute Google Maps</span>
+                <span>Buka Profil & Rute Google Maps</span>
               </a>
 
               <a
                 href={whatsappUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 bg-white hover:bg-emerald-50 text-emerald-800 border border-emerald-300 text-xs font-bold px-6 py-3.5 rounded-xl shadow-xs transition"
+                className="inline-flex items-center gap-2 bg-white hover:bg-emerald-50 text-emerald-800 border border-emerald-300 text-xs font-bold px-6 py-3.5 rounded-xl shadow-xs transition hover:scale-105"
               >
                 <MessageCircle className="w-4 h-4 text-emerald-600" />
                 <span>Chat WhatsApp</span>
@@ -89,15 +102,26 @@ export default function LocationSection() {
 
           {/* Right Map Embed */}
           <div className="lg:col-span-6">
-            <div className="rounded-3xl overflow-hidden shadow-xl border-4 border-white bg-slate-200 aspect-4/3 sm:aspect-16/10">
+            <div className="rounded-3xl overflow-hidden shadow-xl border-4 border-white bg-slate-200 aspect-4/3 sm:aspect-16/10 relative group">
               <iframe
-                title="Google Maps Location AristoBalance Cimahi"
+                title="Google Maps Location Kretek Sendi Aristobalance Cimahi"
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15844.75620942083!2d107.535!3d-6.878!2m3!1f0!2f0!3f0!2m3!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e68e441865a7d65%3A0x6b631d867c2df479!2sCimahi%2C%20Cimahi%20City%2C%20West%20Java!5e0!3m2!1sen!2sid!4v1700000000000!5m2!1sen!2sid"
                 width="100%"
                 height="100%"
                 className="w-full h-full min-h-[340px] border-0"
                 loading="lazy"
               />
+              <div className="absolute bottom-4 right-4 z-10">
+                <a
+                  href={googleMapsUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="bg-white/95 backdrop-blur-md px-3.5 py-1.5 rounded-xl text-slate-800 font-bold text-xs shadow-md border border-slate-200 flex items-center gap-1.5 hover:text-[#0F4C5C] transition"
+                >
+                  <span>Buka di Google Maps</span>
+                  <ExternalLink className="w-3 h-3" />
+                </a>
+              </div>
             </div>
           </div>
         </div>
