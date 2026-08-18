@@ -22,8 +22,7 @@ export default function TestimonialsSection({ testimonials }: TestimonialsSectio
   const [totalReviews, setTotalReviews] = useState<number>(48);
   const [isLoading, setIsLoading] = useState(true);
 
-  const googleMapsUrl =
-    'https://www.google.com/search?kgmid=/g/11v_3nbsj4&hl=id-ID&q=Kretek+Sendi+Aristobalance';
+  const googleMapsUrl = 'https://maps.app.goo.gl/RS51XaGvwwr93DJZ6';
 
   useEffect(() => {
     async function fetchGoogleReviews() {

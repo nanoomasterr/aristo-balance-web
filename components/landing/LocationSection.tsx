@@ -4,8 +4,7 @@ import React from 'react';
 import { MapPin, Clock, Phone, Navigation, MessageCircle, Star, ExternalLink } from 'lucide-react';
 
 export default function LocationSection() {
-  const googleMapsUrl =
-    'https://www.google.com/search?kgmid=/g/11v_3nbsj4&hl=id-ID&q=Kretek+Sendi+Aristobalance';
+  const googleMapsUrl = 'https://maps.app.goo.gl/RS51XaGvwwr93DJZ6';
   const whatsappUrl =
     'https://wa.me/6282118433016?text=Halo%20AristoBalance,%20saya%20ingin%20tanya%20jadwal%20terapi';
 
@@ -43,7 +42,7 @@ export default function LocationSection() {
                 <div>
                   <h4 className="font-bold text-slate-900 text-sm">Alamat Lengkap</h4>
                   <p className="text-slate-600 text-xs mt-1 leading-relaxed">
-                    Jl. Suryapakuan, Belakang Masjid At-Taqwa, RT.01/RW.14, Kapling PJKA No. 50, Kel. Padasuka, Kec. Cimahi Tengah, Kota Cimahi, Jawa Barat.
+                    Jl. Suryapakuan, Belakang Masjid At-Taqwa, RT.01/RW.14, Kapling PJKA No. 50, Kel. Padasuka, Kec. Cimahi Tengah, Kota Cimahi, Jawa Barat 40526.
                   </p>
                 </div>
               </div>
@@ -85,7 +84,7 @@ export default function LocationSection() {
                 className="inline-flex items-center gap-2 bg-[#0F4C5C] hover:bg-[#0A333E] text-white text-xs font-bold px-6 py-3.5 rounded-xl shadow-md transition hover:scale-105"
               >
                 <Navigation className="w-4 h-4" />
-                <span>Buka Profil & Rute Google Maps</span>
+                <span>Buka Rute di Google Maps App</span>
               </a>
 
               <a
@@ -105,7 +104,7 @@ export default function LocationSection() {
             <div className="rounded-3xl overflow-hidden shadow-xl border-4 border-white bg-slate-200 aspect-4/3 sm:aspect-16/10 relative group">
               <iframe
                 title="Google Maps Location Kretek Sendi Aristobalance Cimahi"
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15844.75620942083!2d107.535!3d-6.878!2m3!1f0!2f0!3f0!2m3!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e68e441865a7d65%3A0x6b631d867c2df479!2sCimahi%2C%20Cimahi%20City%2C%20West%20Java!5e0!3m2!1sen!2sid!4v1700000000000!5m2!1sen!2sid"
+                src="https://maps.google.com/maps?q=Kretek%20Sendi%20Aristobalance&t=&z=16&ie=UTF8&iwloc=&output=embed"
                 width="100%"
                 height="100%"
                 className="w-full h-full min-h-[340px] border-0"

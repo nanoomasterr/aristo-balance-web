@@ -65,7 +65,6 @@ export async function GET() {
     rating: 5.0,
     total_reviews: 48,
     reviews: verifiedGoogleReviews,
-    google_maps_url:
-      'https://www.google.com/search?kgmid=/g/11v_3nbsj4&hl=id-ID&q=Kretek+Sendi+Aristobalance',
+    google_maps_url: 'https://maps.app.goo.gl/RS51XaGvwwr93DJZ6',
   });
 }
