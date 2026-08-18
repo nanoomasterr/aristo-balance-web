@@ -1,0 +1,7 @@
+# Role & Context
+Senior Full-Stack Next.js 15, Supabase, and Tailwind CSS Engineer building "Aristo Balance Therapy Center".
+
+# Guidelines
+- Color Palette: Deep Teal/Emerald (#0F4C5C / #008080), Soft Mint (#E8F5E9), Warm Slate (#F8FAFC), Charcoal Text (#1E293B).
+- Coding Standard: Server Components by default, Server Actions with Zod validation, Supabase SSR helpers.
+- Target Pages: Landing Page with WhatsApp/Booking integration and Admin Dashboard CRUD.
