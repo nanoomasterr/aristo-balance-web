@@ -3,8 +3,9 @@ import { createClient } from '@/lib/supabase/server';
 import { dataStore } from '@/lib/data-store';
 import { Service, Testimonial } from '@/lib/types';
 import HeroSection from '@/components/landing/HeroSection';
+import StatsBarSection from '@/components/landing/StatsBarSection';
 import ServicesSection from '@/components/landing/ServicesSection';
-import AboutSection from '@/components/landing/AboutSection';
+import QuizSection from '@/components/landing/QuizSection';
 import BookingForm from '@/components/landing/BookingForm';
 import TestimonialsSection from '@/components/landing/TestimonialsSection';
 import FaqSection from '@/components/landing/FaqSection';
@@ -63,8 +64,9 @@ export default async function LandingPage() {
   return (
     <div className="flex flex-col">
       <HeroSection />
+      <StatsBarSection />
       <ServicesSection services={services} />
-      <AboutSection />
+      <QuizSection />
       <BookingForm services={services} />
       <TestimonialsSection testimonials={testimonials} />
       <FaqSection />

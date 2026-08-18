@@ -1,18 +1,18 @@
 'use client';
 
-import React, { useState } from 'react';
+import React from 'react';
 import { Service } from '@/lib/types';
 import { formatCurrency } from '@/lib/utils';
 import {
-  Activity,
+  Check,
   Clock,
-  ArrowRight,
-  CheckCircle2,
   Sparkles,
-  Shield,
+  MapPin,
+  Layers,
   Zap,
+  Activity,
+  ArrowRight,
 } from 'lucide-react';
-import { Badge } from '@/components/ui/badge';
 
 interface ServicesSectionProps {
   services: Service[];
@@ -20,160 +20,122 @@ interface ServicesSectionProps {
 }
 
 export default function ServicesSection({ services, onSelectService }: ServicesSectionProps) {
-  const [selectedCategory, setSelectedCategory] = useState<string>('all');
+  // Mapping service images based on slug or name
+  const getImageForService = (slug: string, name: string) => {
+    if (slug.includes('1-titik') || name.includes('1 Titik')) return '/images/srv_1titik.jpg';
+    if (slug.includes('2-titik') || name.includes('2 Titik')) return '/images/srv_2titik.jpg';
+    if (slug.includes('3-titik') || name.includes('3 Titik')) return '/images/massage_stretching.jpg';
+    if (slug.includes('saraf-kejepit-1') || name.includes('Saraf Kejepit (1)')) return '/images/srv_saraf1.jpg';
+    if (slug.includes('saraf-kejepit-2') || name.includes('Saraf Kejepit (2)')) return '/images/srv_saraf2.jpg';
+    if (slug.includes('bekam') || name.includes('Bekam')) return '/images/bekam_cupping.jpg';
+    if (slug.includes('release') || name.includes('Release') || name.includes('Massage')) return '/images/kretek_sendi.jpg';
+    if (slug.includes('akupunktur') || name.includes('Akupunktur')) return '/images/srv_saraf2.jpg';
+    return '/images/srv_1titik.jpg';
+  };
 
-  const handleBookService = (service: Service) => {
+  const getBadgeForService = (service: Service) => {
+    if (service.name.includes('Saraf Kejepit (1)')) return 'Spesialis Saraf (1)';
+    if (service.name.includes('Saraf Kejepit (2)')) return 'Spesialis Saraf (2)';
+    if (service.name.includes('Bekam')) return 'Detoks & Inflamasi';
+    if (service.name.includes('Release')) return 'Fleksibilitas';
+    if (service.name.includes('Akupunktur')) return 'Stimulasi Saraf';
+    return `${service.duration_minutes} Menit`;
+  };
+
+  const handleBook = (service: Service) => {
     if (onSelectService) {
       onSelectService(service);
     }
-    const bookingElement = document.getElementById('booking');
-    if (bookingElement) {
-      bookingElement.scrollIntoView({ behavior: 'smooth' });
-      // Update select input if present
-      const selectElement = document.querySelector('select[name="service_id"]') as HTMLSelectElement;
-      if (selectElement) {
-        selectElement.value = service.id;
-      }
+    const bookingEl = document.getElementById('booking');
+    if (bookingEl) {
+      bookingEl.scrollIntoView({ behavior: 'smooth' });
     }
   };
 
   return (
-    <section id="services" className="py-24 bg-white relative">
+    <section id="layanan" className="py-20 bg-white relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
-          <div className="inline-flex items-center gap-2 bg-[#E8F5E9] text-[#0F4C5C] px-3.5 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider">
-            <Sparkles className="w-3.5 h-3.5 text-emerald-600" />
-            Layanan Terapi Klinis
-          </div>
+        <div className="text-center max-w-3xl mx-auto mb-16 space-y-3">
+          <span className="text-xs font-black uppercase tracking-widest text-[#008080] bg-teal-50 border border-teal-200/80 px-4 py-1.5 rounded-full inline-block">
+            LAYANAN & SPESIALISASI TERAPI
+          </span>
 
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
-            Program Terapi Terarah Sesuai Kebutuhan Tubuh Anda
+          <h2 className="text-3xl sm:text-4xl font-black text-slate-900 tracking-tight">
+            Metodologi Terapi Terintegrasi AristoBalance
           </h2>
 
-          <p className="text-slate-600 text-base leading-relaxed">
-            Setiap sesi dipandu oleh fisioterapis ahli melalui tahapan asesmen postur, terapi manual terstruktur, modalitas dekompresi, dan latihan penguatan fungsional.
+          <p className="text-slate-600 text-sm sm:text-base leading-relaxed">
+            Kami memadukan teknik manual therapy teruji untuk memberikan hasil maksimal tanpa efek samping obat-obatan.
           </p>
         </div>
 
-        {/* Service Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {services.map((service, index) => {
-            const isFeatured = index === 0;
+        {/* Services Grid (8 cards) */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          {services.map((service) => {
+            const imgSrc = getImageForService(service.slug, service.name);
+            const badgeText = getBadgeForService(service);
 
             return (
               <div
                 key={service.id}
-                className={`relative flex flex-col justify-between rounded-3xl p-7 transition-all duration-300 ${
-                  isFeatured
-                    ? 'bg-gradient-to-b from-[#0F4C5C] to-[#0A333E] text-white shadow-xl shadow-[#0F4C5C]/20 ring-2 ring-[#008080]'
-                    : 'bg-[#F8FAFC] hover:bg-white text-slate-900 border border-slate-200/80 hover:border-teal-300 hover:shadow-xl'
-                }`}
+                className="bg-[#F8FAFC] rounded-3xl border border-slate-200/90 overflow-hidden hover:shadow-xl hover:border-teal-300 hover:bg-white transition-all duration-300 flex flex-col justify-between group"
               >
-                {isFeatured && (
-                  <div className="absolute -top-3 right-6 bg-emerald-400 text-slate-950 text-[11px] font-bold uppercase px-3 py-1 rounded-full tracking-wider shadow-sm">
-                    Paling Diminati
-                  </div>
-                )}
-
                 <div>
-                  {/* Card Header & Icon */}
-                  <div className="flex items-center justify-between mb-6">
-                    <div
-                      className={`w-12 h-12 rounded-2xl flex items-center justify-center font-bold ${
-                        isFeatured ? 'bg-white/10 text-emerald-300' : 'bg-teal-100 text-[#0F4C5C]'
-                      }`}
-                    >
-                      <Activity className="w-6 h-6" />
-                    </div>
-
-                    <div
-                      className={`flex items-center gap-1.5 text-xs font-semibold px-2.5 py-1 rounded-lg ${
-                        isFeatured ? 'bg-white/10 text-teal-100' : 'bg-slate-200/70 text-slate-700'
-                      }`}
-                    >
-                      <Clock className="w-3.5 h-3.5" />
-                      <span>{service.duration_minutes} Menit</span>
+                  {/* Service Image Box with Badge */}
+                  <div className="relative h-48 w-full overflow-hidden bg-slate-100">
+                    <img
+                      src={imgSrc}
+                      alt={service.name}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                    />
+                    <div className="absolute top-3 right-3 bg-slate-900/80 backdrop-blur-xs text-white text-[11px] font-bold px-3 py-1 rounded-full shadow-sm">
+                      {badgeText}
                     </div>
                   </div>
 
-                  {/* Title & Description */}
-                  <h3
-                    className={`text-xl font-bold mb-3 tracking-tight ${
-                      isFeatured ? 'text-white' : 'text-slate-900'
-                    }`}
-                  >
-                    {service.name}
-                  </h3>
+                  {/* Body Content */}
+                  <div className="p-5 space-y-3">
+                    <h3 className="font-bold text-slate-900 text-base leading-snug group-hover:text-[#0F4C5C] transition-colors">
+                      {service.name}
+                    </h3>
 
-                  <p
-                    className={`text-sm leading-relaxed mb-6 ${
-                      isFeatured ? 'text-teal-100/90' : 'text-slate-600'
-                    }`}
-                  >
-                    {service.description}
-                  </p>
+                    <p className="text-slate-600 text-xs leading-relaxed line-clamp-3">
+                      {service.description}
+                    </p>
 
-                  {/* Clinical Benefits Checklist */}
-                  <div className="space-y-2.5 mb-6 text-xs">
-                    <div className="flex items-center gap-2">
-                      <CheckCircle2
-                        className={`w-4 h-4 shrink-0 ${
-                          isFeatured ? 'text-emerald-300' : 'text-emerald-600'
-                        }`}
-                      />
-                      <span className={isFeatured ? 'text-teal-50' : 'text-slate-700'}>
-                        Pemeriksaan ROM & Biomekanik Awal
-                      </span>
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <CheckCircle2
-                        className={`w-4 h-4 shrink-0 ${
-                          isFeatured ? 'text-emerald-300' : 'text-emerald-600'
-                        }`}
-                      />
-                      <span className={isFeatured ? 'text-teal-50' : 'text-slate-700'}>
-                        Kombinasi Manual Therapy & Modalitas
-                      </span>
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <CheckCircle2
-                        className={`w-4 h-4 shrink-0 ${
-                          isFeatured ? 'text-emerald-300' : 'text-emerald-600'
-                        }`}
-                      />
-                      <span className={isFeatured ? 'text-teal-50' : 'text-slate-700'}>
-                        Home Exercise Plan Terarah
-                      </span>
+                    {/* Integrated Techniques Bullet Points */}
+                    <div className="pt-2 border-t border-slate-200/70 space-y-1.5 text-[11px] text-slate-600 font-medium">
+                      <div className="flex items-center gap-1.5">
+                        <Check className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
+                        <span>Stretching point & Massage point</span>
+                      </div>
+                      <div className="flex items-center gap-1.5">
+                        <Check className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
+                        <span>Acupoint & Cupping point</span>
+                      </div>
+                      <div className="flex items-center gap-1.5">
+                        <Check className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
+                        <span>Infrared & Reposisi / Kretek Sendi</span>
+                      </div>
                     </div>
                   </div>
                 </div>
 
-                {/* Price & Action */}
-                <div className={`pt-6 border-t ${isFeatured ? 'border-teal-800' : 'border-slate-200'}`}>
-                  <div className="flex items-baseline justify-between mb-4">
-                    <span className={`text-xs ${isFeatured ? 'text-teal-200' : 'text-slate-500'}`}>
-                      Biaya per sesi:
-                    </span>
-                    <span
-                      className={`text-2xl font-extrabold tracking-tight ${
-                        isFeatured ? 'text-emerald-300' : 'text-[#0F4C5C]'
-                      }`}
-                    >
+                {/* Card Footer: Price & Book Button */}
+                <div className="p-5 pt-3 border-t border-slate-200/70 flex items-center justify-between">
+                  <div>
+                    <span className="text-[10px] uppercase font-bold text-slate-400 block">Tarif</span>
+                    <span className="text-base font-extrabold text-[#0F4C5C]">
                       {formatCurrency(service.price)}
                     </span>
                   </div>
 
                   <button
-                    onClick={() => handleBookService(service)}
-                    className={`w-full py-3 px-4 rounded-xl font-semibold text-sm flex items-center justify-center gap-2 transition-all duration-200 ${
-                      isFeatured
-                        ? 'bg-emerald-400 hover:bg-emerald-300 text-slate-950 shadow-md hover:scale-[1.02]'
-                        : 'bg-[#0F4C5C] hover:bg-[#0A333E] text-white shadow-sm hover:scale-[1.02]'
-                    }`}
+                    onClick={() => handleBook(service)}
+                    className="py-2 px-4 rounded-xl bg-[#0F4C5C] hover:bg-[#0A333E] text-white text-xs font-bold shadow-xs hover:scale-105 active:scale-95 transition cursor-pointer"
                   >
-                    <span>Pilih Layanan Ini</span>
-                    <ArrowRight className="w-4 h-4" />
+                    BOOK NOW
                   </button>
                 </div>
               </div>

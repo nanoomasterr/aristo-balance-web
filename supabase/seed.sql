@@ -1,54 +1,70 @@
--- Seed data for Aristo Balance Therapy Center
+-- Seed data for AristoBalance Terapi Otot, Tulang & Sendi (Cimahi)
 
 -- 1. Services
 INSERT INTO public.services (name, slug, description, duration_minutes, price, is_active)
 VALUES
 (
-  'Spine Care & Decompression Therapy',
-  'spine-care-decompression',
-  'Terapi traksi non-bedah mutakhir untuk mengatasi saraf kejepit (HNP), nyeri pinggang kronis (LBP), sciatica, dan dekompresi bantalan tulang belakang.',
+  'Terapi 1 Titik Keluhan',
+  'terapi-1-titik-keluhan',
+  'Penanganan fokus pada 1 lokasi titik keluhan utama dengan 6 kombinasi metode: Stretching point, Massage point, Acupoint, Cupping point, Infrared & Reposisi / Kretek Sendi.',
   60,
-  450000,
+  150000,
   true
 ),
 (
-  'Posture Correction & Scoliosis Management',
-  'posture-correction-scoliosis',
-  'Evaluasi biomekanik menyeluruh, alignment tulang belakang, koreksi postur bungkuk (kyphosis), forward head posture, dan penanganan skoliosis terukur.',
-  60,
-  400000,
-  true
-),
-(
-  'Sports Injury & Athlete Rehabilitation',
-  'sports-injury-rehab',
-  'Pemulihan cedera olahraga (ACL, ankle sprain, rotator cuff, hamstring strain) dengan modalitas fisioterapi canggih dan return-to-sport conditioning.',
-  75,
-  500000,
-  true
-),
-(
-  'Musculoskeletal & Joint Mobilization',
-  'musculoskeletal-joint-mobilization',
-  'Penanganan frozen shoulder, osteoarthritis lutut, trigger finger, tennis elbow, dan kekakuan sendi melalui manual therapy terpadu.',
-  60,
-  375000,
-  true
-),
-(
-  'Neurological Rehabilitation & Stroke Recovery',
-  'neuro-rehab-stroke',
-  'Terapi neuromuskular terstruktur untuk mengembalikan koordinasi motorik, keseimbangan langkah, dan kemandirian fungsional pasca stroke atau bell''s palsy.',
+  'Terapi 2 Titik Keluhan',
+  'terapi-2-titik-keluhan',
+  'Penanganan intensif untuk 2 lokasi titik keluhan sekaligus guna mengembalikan kelenturan tubuh.',
   90,
-  550000,
+  200000,
   true
 ),
 (
-  'Geriatric Balance & Fall Prevention',
-  'geriatric-balance-care',
-  'Program latihan keseimbangan, penguatan otot inti, dan propriosepsi khusus lansia untuk mencegah risiko jatuh dan menjaga mobilitas mandiri.',
+  'Terapi 3 Titik Keluhan',
+  'terapi-3-titik-keluhan',
+  'Penanganan menyeluruh untuk 3 titik keluhan utama (Total Body Rebalance) durasi 120 menit.',
+  120,
+  250000,
+  true
+),
+(
+  'Terapi Penanganan Saraf Kejepit (1)',
+  'terapi-saraf-kejepit-1',
+  'Terapi spesialis pembebasan kompresi saraf kejepit (HNP) tingkat sedang durasi 90 menit.',
+  90,
+  200000,
+  true
+),
+(
+  'Terapi Penanganan Saraf Kejepit (2)',
+  'terapi-saraf-kejepit-2',
+  'Penanganan saraf kejepit (HNP) intensif & mendalam 120 menit dengan 6 teknik lengkap.',
+  120,
+  250000,
+  true
+),
+(
+  'Bekam Injury & Cupping Therapy',
+  'bekam-injury-cupping',
+  'Teknik bekam medis steril (kering/basah) ditargetkan pada titik trigger cidera & inflamasi otot.',
   60,
-  350000,
+  150000,
+  true
+),
+(
+  'Release Otot & Deep Tissue Massage',
+  'release-otot-deep-tissue',
+  'Pijat rilis otot tanpa minyak (dry) atau aromaterapi (wet) berfokus melonggarkan simpul spasme.',
+  60,
+  150000,
+  true
+),
+(
+  'Akupunktur Ashi Point (Injury)',
+  'akupunktur-ashi-point',
+  'Penusukan mikro pada titik sensitif nyeri (Ashi Point) merangsang rilis endorphin & redakan kebas.',
+  60,
+  150000,
   true
 )
 ON CONFLICT (slug) DO NOTHING;
@@ -57,30 +73,23 @@ ON CONFLICT (slug) DO NOTHING;
 INSERT INTO public.testimonials (patient_name, problem_category, review_text, rating, is_published)
 VALUES
 (
-  'Bambang S., 48 thn (Eksekutif Swasta)',
-  'Nyeri Pinggang & Saraf Kejepit L4-L5',
-  'Sudah 6 bulan sulit duduk lebih dari 20 menit karena saraf kejepit. Setelah 5 sesi Spine Care di Aristo Balance, rasa kebas di paha hilang dan sekarang sudah bisa kerja normal tanpa nyeri.',
+  'Budi Pratama (42 th)',
+  'Saraf Kejepit Pinggang • Padasuka, Cimahi',
+  'Saraf kejepit L4-L5 bikin pinggang panas sampai kaki kesemutan kalau duduk agak lama. Setelah 2x penanganan kretek sendi + bekam injury di AristoBalance, rasa panasnya hilang 80%. Tidur jadi nyenyak!',
   5,
   true
 ),
 (
-  'dr. Clarissa M., 32 thn (Dokter Umum)',
-  'Forward Head Posture & Nyeri Leher',
-  'Sering membungkuk saat praktik menyebabkan leher kaku kronis. Tim fisioterapis di sini sangat profesional, penjelasannya berbasis anatomi jelas, dan program latihannya sangat berdampak.',
+  'Rina Dianita (29 th)',
+  'Kaku Leher & Migrain • Cimahi Tengah',
+  'Leher kaku banget gara-gara kerja laptop seharian, sering pusing migrain. Dipijat release otot & leher dikretek presisi sama praktisinya, langsung berasa enteng bgt! Pelayanan ramah & dijelaskan detail.',
   5,
   true
 ),
 (
-  'Kevin Pratama, 24 thn (Atlet Basket)',
-  'Pasca Operasi ACL & Meniscus',
-  'Program Sports Rehab di Aristo Balance luar biasa. Dari yang tadinya takut melompat, sekarang sudah bisa kembali lari cepat dan latihan tanding dengan stabil dan percaya diri.',
-  5,
-  true
-),
-(
-  'Ibu Hendrawan, 63 thn',
-  'Osteoarthritis Lutut & Gangguan Keseimbangan',
-  'Dulu mau naik tangga rasanya ngilu sekali dan sering goyang saat berjalan. Sekarang lutut terasa jauh lebih enteng dan langkah kaki terasa kokoh.',
+  'Ahmad Hidayat (34 th)',
+  'Cidera Sendi Lutut • Leuwigajah',
+  'Cidera lutut waktu main futsal, buat jalan agak pincang. Dicoba bekam injury sama stretching mobilisasi sendi di sini. Mantap sekali harganya sangat terjangkau dibanding klinik besar tapi hasilnya top.',
   5,
   true
 );

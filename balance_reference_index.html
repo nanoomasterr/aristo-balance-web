@@ -1,0 +1,800 @@
+<!DOCTYPE html>
+<html lang="id" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AristoBalance Terapi Otot, Tulang & Sendi | Cimahi</title>
+  <meta name="description" content="Pusat terapi spesialis otot, tulang belakang, sendi & saraf kejepit di Cimahi. Kretek Sendi, Bekam Injury, Muscle Release, & Stretching Presisi. Hubungi 0822-9568-8732.">
+  <meta name="keywords" content="terapi otot cimahi, kretek sendi cimahi, bekam injury, saraf kejepit cimahi, aristo balance, terapi tulang sendi, pijat cidera cimahi">
+  
+  <!-- Favicon -->
+  <link rel="icon" href="assets/images/logo.jpg">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Main Stylesheet -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Top Announcement Bar -->
+  <div class="announcement-bar">
+    <div class="container ann-container">
+      <div class="ann-text">
+        <span class="badge-pill"><i class="fa-solid fa-clock"></i> Buka Setiap Hari 09.00 - 22.00 WIB</span>
+        <span>📍 Padasuka, Cimahi Tengah | Wajib Reservasi Terlebih Dahulu</span>
+      </div>
+      <div class="ann-contacts">
+        <a href="https://wa.me/6282118433016" target="_blank" rel="noopener"><i class="fa-brands fa-whatsapp"></i> 0821-1843-3016</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Navigation Header -->
+  <header class="site-header" id="siteHeader">
+    <div class="container header-container">
+      <a href="#" class="brand-logo">
+        <img src="assets/images/logo.jpg" alt="AristoBalance Logo" class="brand-logo-img">
+        <div class="logo-text">
+          <span class="brand-name">Aristo<span class="brand-accent">Balance</span></span>
+          <span class="brand-tagline" data-i18n="logo_tagline">Terapi Otot, Tulang & Sendi</span>
+        </div>
+      </a>
+
+      <nav class="main-nav" id="mainNav">
+        <ul class="nav-list">
+          <li><a href="#layanan" class="nav-link" data-i18n="nav_services">Layanan</a></li>
+          <li><a href="#testimoni" class="nav-link" data-i18n="nav_reviews">Testimoni</a></li>
+          <li><a href="#faq" class="nav-link" data-i18n="nav_faq">FAQ</a></li>
+          <li><a href="#lokasi" class="nav-link" data-i18n="nav_location">Lokasi</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <button class="theme-toggle-btn" id="themeToggle" title="Ganti Tema">
+          <i class="fa-solid fa-moon"></i>
+        </button>
+        
+        <button class="lang-toggle-btn" id="langToggle" title="Change Language">
+          <span class="lang-flag">🇮🇩</span>
+          <span class="lang-code">ID</span>
+        </button>
+
+        <button class="btn btn-primary nav-btn" id="openBookingHeaderBtn">
+          <i class="fa-regular fa-calendar-check"></i> <span data-i18n="btn_book_now">Booking Terapi</span>
+        </button>
+
+        <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle Menu">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <div class="hero-bg-shapes">
+      <div class="shape shape-1"></div>
+      <div class="shape shape-2"></div>
+    </div>
+    <div class="container hero-container">
+      <div class="hero-content">
+        <div class="hero-badge">
+          <span class="badge-pulse"></span>
+          <span data-i18n="hero_badge"><i class="fa-solid fa-shield-halved"></i> Penanganan Profesional & Transparan di Cimahi</span>
+        </div>
+        <h1 class="hero-title">
+          <span data-i18n="hero_title_1">Bebas Dari Nyeri Otot,</span><br>
+          <span class="text-gradient" data-i18n="hero_title_2">Saraf Kejepit & Sendi Kaku</span>
+        </h1>
+        <p class="hero-description" data-i18n="hero_desc">
+          AristoBalance memadukan metode <strong>Kretek Sendi (Spinal Manipulation)</strong>, <strong>Bekam Injury</strong>, <strong>Release Otot Deep Tissue</strong>, dan <strong>Stretching Presisi</strong> untuk memulihkan postur, mengurangi kompresi saraf, dan mengembalikan fleksibilitas gerak tubuh Anda secara alami.
+        </p>
+
+        <div class="hero-cta-group">
+          <button class="btn btn-primary btn-lg pulse-glow" id="heroBookBtn">
+            <i class="fa-brands fa-whatsapp"></i> <span data-i18n="hero_btn_book">Reservasi Jadwal Sekarang</span>
+          </button>
+          <a href="#layanan" class="btn btn-outline btn-lg">
+            <i class="fa-solid fa-notes-medical"></i> <span data-i18n="hero_btn_services">Lihat Layanan Terapi</span>
+          </a>
+        </div>
+
+        <div class="hero-features-list">
+          <div class="h-feat-item">
+            <i class="fa-solid fa-circle-check"></i>
+            <span data-i18n="feat_1">Tanpa Obat Kimia</span>
+          </div>
+          <div class="h-feat-item">
+            <i class="fa-solid fa-circle-check"></i>
+            <span data-i18n="feat_2">Bisa Pilih Durasi & Budget</span>
+          </div>
+          <div class="h-feat-item">
+            <i class="fa-solid fa-circle-check"></i>
+            <span data-i18n="feat_3">Praktisi Berpengalaman</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-visual">
+        <div class="hero-img-wrapper">
+          <img src="assets/images/hero.jpg" alt="AristoBalance Therapy Session" class="hero-img">
+          
+          <div class="glass-card floating-card card-top-right">
+            <div class="card-icon"><i class="fa-solid fa-bolt"></i></div>
+            <div class="card-info">
+              <span class="card-val">98%</span>
+              <span class="card-lbl" data-i18n="card_stat_1">Klien Mengaku Nyeri Berkurang Instan</span>
+            </div>
+          </div>
+
+          <div class="glass-card floating-card card-bottom-left">
+            <div class="card-icon icon-green"><i class="fa-solid fa-user-doctor"></i></div>
+            <div class="card-info">
+              <span class="card-val" data-i18n="card_stat_2_val">3,500+</span>
+              <span class="card-lbl" data-i18n="card_stat_2">Penanganan Berhasil</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Quick Stats Bar -->
+  <section class="stats-bar-section">
+    <div class="container">
+      <div class="stats-grid">
+        <div class="stat-item">
+          <div class="stat-number" data-target="3500">0+</div>
+          <div class="stat-label" data-i18n="stat_1_lbl">Klien Terbantu di Bandung & Cimahi</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">4.9 ★</div>
+          <div class="stat-label" data-i18n="stat_2_lbl">Rating Kepuasan Pasien</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">5 Dalam 1</div>
+          <div class="stat-label" data-i18n="stat_3_lbl">Metode Terapi Terintegrasi</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">100%</div>
+          <div class="stat-label" data-i18n="stat_4_lbl">Berdasarkan Anatomi & Biomekanika</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services & Treatments Showcase -->
+  <section class="section services-section" id="layanan">
+    <div class="container">
+      <div class="section-header text-center">
+        <span class="section-subtitle" data-i18n="services_sub">LAYANAN & SPESIALISASI TERAPI</span>
+        <h2 class="section-title" data-i18n="services_title">Metodologi Terapi Terintegrasi AristoBalance</h2>
+        <p class="section-desc" data-i18n="services_desc">Kami memadukan teknik manual therapy teruji untuk memberikan hasil maksimal tanpa efek samping obat-obatan.</p>
+      </div>
+
+      <div class="services-grid">
+        <!-- Official Service Card 1 -->
+        <div class="service-card">
+          <div class="srv-img-box">
+            <img src="assets/images/srv_1titik.jpg" alt="Terapi 1 Titik Keluhan" class="srv-img">
+            <span class="srv-badge">60 Menit</span>
+          </div>
+          <div class="srv-body">
+            <div class="srv-icon"><i class="fa-solid fa-location-dot"></i></div>
+            <h3 class="srv-title">Terapi 1 Titik Keluhan</h3>
+            <p class="srv-desc">Penanganan fokus pada 1 lokasi titik keluhan utama dengan 6 kombinasi metode terapi terintegrasi.</p>
+            <ul class="srv-list">
+              <li><i class="fa-solid fa-check"></i> Stretching point & Massage point</li>
+              <li><i class="fa-solid fa-check"></i> Acupoint & Cupping point</li>
+              <li><i class="fa-solid fa-check"></i> Infrared & Reposisi / Kretek Sendi</li>
+            </ul>
+            <div class="srv-footer">
+              <span class="srv-price">Rp 150.000</span>
+              <button class="btn btn-sm btn-outline select-service-btn" data-service="Terapi 1 Titik Keluhan">BOOK NOW</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Official Service Card 2 -->
+        <div class="service-card">
+          <div class="srv-img-box">
+            <img src="assets/images/srv_2titik.jpg" alt="Terapi 2 Titik Keluhan" class="srv-img">
+            <span class="srv-badge">90 Menit</span>
+          </div>
+          <div class="srv-body">
+            <div class="srv-icon"><i class="fa-solid fa-map-pin"></i></div>
+            <h3 class="srv-title">Terapi 2 Titik Keluhan</h3>
+            <p class="srv-desc">Penanganan intensif untuk 2 lokasi titik keluhan sekaligus guna mengembalikan kelenturan tubuh.</p>
+            <ul class="srv-list">
+              <li><i class="fa-solid fa-check"></i> Stretching point & Massage point</li>
+              <li><i class="fa-solid fa-check"></i> Acupoint & Cupping point</li>
+              <li><i class="fa-solid fa-check"></i> Infrared & Reposisi / Kretek Sendi</li>
+            </ul>
+            <div class="srv-footer">
+              <span class="srv-price">Rp 200.000</span>
+              <button class="btn btn-sm btn-outline select-service-btn" data-service="Terapi 2 Titik Keluhan">BOOK NOW</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Official Service Card 3 -->
+        <div class="service-card">
+          <div class="srv-img-box">
+            <img src="assets/images/massage_stretching.jpg" alt="Terapi 3 Titik Keluhan" class="srv-img">
+            <span class="srv-badge">120 Menit</span>
+          </div>
+          <div class="srv-body">
+            <div class="srv-icon"><i class="fa-solid fa-layer-group"></i></div>
+            <h3 class="srv-title">Terapi 3 Titik Keluhan</h3>
+            <p class="srv-desc">Penanganan menyeluruh untuk 3 titik keluhan utama (Total Body Rebalance) durasi 120 menit.</p>
+            <ul class="srv-list">
+              <li><i class="fa-solid fa-check"></i> Stretching point & Massage point</li>
+              <li><i class="fa-solid fa-check"></i> Acupoint & Cupping point</li>
+              <li><i class="fa-solid fa-check"></i> Infrared & Reposisi / Kretek Sendi</li>
+            </ul>
+            <div class="srv-footer">
+              <span class="srv-price">Rp 250.000</span>
+              <button class="btn btn-sm btn-outline select-service-btn" data-service="Terapi 3 Titik Keluhan">BOOK NOW</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Official Service Card 4 -->
+        <div class="service-card">
+          <div class="srv-img-box">
+            <img src="assets/images/srv_saraf1.jpg" alt="Terapi Penanganan Saraf Kejepit (1)" class="srv-img">
+            <span class="srv-badge badge-alt">Spesialis Saraf (1)</span>
+          </div>
+          <div class="srv-body">
+            <div class="srv-icon"><i class="fa-solid fa-bolt-lightning"></i></div>
+            <h3 class="srv-title">Terapi Saraf Kejepit (1)</h3>
+            <p class="srv-desc">Terapi spesialis pembebasan kompresi saraf kejepit (HNP) tingkat sedang durasi 90 menit.</p>
+            <ul class="srv-list">
+              <li><i class="fa-solid fa-check"></i> Penanganan Khusus Saraf Kejepit</li>
+              <li><i class="fa-solid fa-check"></i> Acupoint & Cupping point</li>
+              <li><i class="fa-solid fa-check"></i> Infrared & Reposisi / Kretek Sendi</li>
+            </ul>
+            <div class="srv-footer">
+              <span class="srv-price">Rp 200.000</span>
+              <button class="btn btn-sm btn-outline select-service-btn" data-service="Terapi Penanganan Saraf Kejepit (1)">BOOK NOW</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Official Service Card 5 -->
+        <div class="service-card">
+          <div class="srv-img-box">
+            <img src="assets/images/srv_saraf2.jpg" alt="Terapi Penanganan Saraf Kejepit (2)" class="srv-img">
+            <span class="srv-badge badge-alt">Spesialis Saraf (2)</span>
+          </div>
+          <div class="srv-body">
+            <div class="srv-icon"><i class="fa-solid fa-kit-medical"></i></div>
+            <h3 class="srv-title">Terapi Saraf Kejepit (2)</h3>
+            <p class="srv-desc">Penanganan saraf kejepit (HNP) intensif & mendalam 120 menit dengan 6 teknik lengkap.</p>
+            <ul class="srv-list">
+              <li><i class="fa-solid fa-check"></i> Terapi Saraf Kejepit Total Recovery</li>
+              <li><i class="fa-solid fa-check"></i> Acupoint & Cupping point</li>
+              <li><i class="fa-solid fa-check"></i> Infrared & Reposisi / Kretek Sendi</li>
+            </ul>
+            <div class="srv-footer">
+              <span class="srv-price">Rp 250.000</span>
+              <button class="btn btn-sm btn-outline select-service-btn" data-service="Terapi Penanganan Saraf Kejepit (2)">BOOK NOW</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Official Service Card 6 -->
+        <div class="service-card">
+          <div class="srv-img-box">
+            <img src="assets/images/bekam_cupping.jpg" alt="Bekam Injury & Cupping Therapy" class="srv-img">
+            <span class="srv-badge">Detoks & Inflamasi</span>
+          </div>
+          <div class="srv-body">
+            <div class="srv-icon"><i class="fa-solid fa-flask-vial"></i></div>
+            <h3 class="srv-title">Bekam Injury & Cupping</h3>
+            <p class="srv-desc">Teknik bekam medis steril (kering/basah) ditargetkan pada titik trigger cidera & inflamasi otot.</p>
+            <ul class="srv-list">
+              <li><i class="fa-solid fa-check"></i> Menstimulasi sirkulasi darah jaringan dalam</li>
+              <li><i class="fa-solid fa-check"></i> Mengurangi pembengkakan & inflamasi kronis</li>
+              <li><i class="fa-solid fa-check"></i> Peralatan 100% higienis & sekali pakai</li>
+            </ul>
+            <div class="srv-footer">
+              <span class="srv-price">Rp 150.000</span>
+              <button class="btn btn-sm btn-outline select-service-btn" data-service="Bekam Injury & Cupping Therapy">BOOK NOW</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Official Service Card 7 -->
+        <div class="service-card">
+          <div class="srv-img-box">
+            <img src="assets/images/kretek_sendi.jpg" alt="Release Otot & Deep Tissue Massage" class="srv-img">
+            <span class="srv-badge">Fleksibilitas</span>
+          </div>
+          <div class="srv-body">
+            <div class="srv-icon"><i class="fa-solid fa-child-reaching"></i></div>
+            <h3 class="srv-title">Release Otot & Massage</h3>
+            <p class="srv-desc">Pijat rilis otot tanpa minyak (dry) atau aromaterapi (wet) berfokus melonggarkan simpul spasme.</p>
+            <ul class="srv-list">
+              <li><i class="fa-solid fa-check"></i> Atasi kelelahan kronis & otot tegang berat</li>
+              <li><i class="fa-solid fa-check"></i> Melancarkan sirkulasi oksigen & limfatik</li>
+              <li><i class="fa-solid fa-check"></i> Memberikan relaksasi otot mendalam</li>
+            </ul>
+            <div class="srv-footer">
+              <span class="srv-price">Rp 150.000</span>
+              <button class="btn btn-sm btn-outline select-service-btn" data-service="Release Otot & Deep Tissue Massage">BOOK NOW</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Official Service Card 8 -->
+        <div class="service-card">
+          <div class="srv-img-box">
+            <img src="assets/images/srv_saraf2.jpg" alt="Akupunktur Ashi Point (Injury)" class="srv-img">
+            <span class="srv-badge badge-alt">Stimulasi Saraf</span>
+          </div>
+          <div class="srv-body">
+            <div class="srv-icon"><i class="fa-solid fa-needle"></i></div>
+            <h3 class="srv-title">Akupunktur Ashi Point</h3>
+            <p class="srv-desc">Penusukan mikro pada titik sensitif nyeri (Ashi Point) merangsang rilis endorphin & redakan kebas.</p>
+            <ul class="srv-list">
+              <li><i class="fa-solid fa-check"></i> Efektif untuk kesemutan & kebas menjalar</li>
+              <li><i class="fa-solid fa-check"></i> Mempercepat pemulihan jaringan ligamen</li>
+              <li><i class="fa-solid fa-check"></i> Jarum steril sekali pakai medis standar</li>
+            </ul>
+            <div class="srv-footer">
+              <span class="srv-price">Rp 150.000</span>
+              <button class="btn btn-sm btn-outline select-service-btn" data-service="Akupunktur Ashi Point (Injury)">BOOK NOW</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+  <!-- Interactive Self-Assessment Quiz Modal / Banner -->
+  <section class="section quiz-banner-section">
+    <div class="container">
+      <div class="quiz-banner">
+        <div class="quiz-info">
+          <span class="quiz-tag"><i class="fa-solid fa-notes-medical"></i> SKRINING GEJALA CEPAT</span>
+          <h2>Bingung Memilih Layanan Yang Cocok?</h2>
+          <p>Ikuti 3 pertanyaan singkat untuk mengetahui kondisi gangguan otot/tulang Anda dan estimasi sesi terapi yang disarankan.</p>
+        </div>
+        <button class="btn btn-light btn-lg" id="openQuizBtn">
+          <i class="fa-solid fa-clipboard-question"></i> Mulai Skrining Mandiri
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials & Recovery Stories -->
+  <section class="section testi-section" id="testimoni">
+    <div class="container">
+      <div class="section-header text-center">
+        <span class="section-subtitle" data-i18n="testi_sub">TESTIMONI PASIEN REAL</span>
+        <h2 class="section-title" data-i18n="testi_title">Kisah Pemulihan Dari Klien Kami</h2>
+        <p class="section-desc" data-i18n="testi_desc">Ribuan masyarakat Cimahi dan Bandung telah merasakan perubahan signifikan setelah penanganan di AristoBalance.</p>
+      </div>
+
+      <div class="testi-grid">
+        <!-- Review Card 1 -->
+        <div class="testi-card">
+          <div class="testi-rating">
+            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+          </div>
+          <p class="testi-text">"Saraf kejepit L4-L5 bikin pinggang panas sampai kaki kesemutan kalau duduk agak lama. Setelah 2x penanganan kretek sendi + bekam injury di AristoBalance, rasa panasnya hilang 80%. Tidur jadi nyenyak!"</p>
+          <div class="testi-author">
+            <div class="author-avatar">BP</div>
+            <div class="author-info">
+              <h4>Budi Pratama (42 th)</h4>
+              <span>Keluhan: Saraf Kejepit Pinggang • Padasuka, Cimahi</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Review Card 2 -->
+        <div class="testi-card">
+          <div class="testi-rating">
+            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+          </div>
+          <p class="testi-text">"Leher kaku banget gara-gara kerja laptop seharian, sering pusing migrain. Dipijat release otot & leher dikretek presisi sama praktisinya, langsung berasa enteng bgt! Pelayanan ramah & dijelaskan detail."</p>
+          <div class="testi-author">
+            <div class="author-avatar">RD</div>
+            <div class="author-info">
+              <h4>Rina Dianita (29 th)</h4>
+              <span>Keluhan: Kaku Leher & Migrain • Cimahi Tengah</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Review Card 3 -->
+        <div class="testi-card">
+          <div class="testi-rating">
+            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+          </div>
+          <p class="testi-text">"Cidera lutut waktu main futsal, buat jalan agak pincang. Dicoba bekam injury sama stretching mobilisasi sendi di sini. Mantap sekali harganya sangat terjangkau dibanding klinik besar tapi hasilnya top."</p>
+          <div class="testi-author">
+            <div class="author-avatar">AH</div>
+            <div class="author-info">
+              <h4>Ahmad Hidayat (34 th)</h4>
+              <span>Keluhan: Cidera Sendi Lutut • Leuwigajah</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="section faq-section" id="faq">
+    <div class="container">
+      <div class="section-header text-center">
+        <span class="section-subtitle" data-i18n="faq_sub">PERTANYAAN UMUM</span>
+        <h2 class="section-title" data-i18n="faq_title">Hal Yang Sering Ditanyakan</h2>
+      </div>
+
+      <div class="faq-accordion-wrapper">
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>Apakah metode Kretek Sendi aman dilakukan?</span>
+            <i class="fa-solid fa-chevron-down faq-icon"></i>
+          </button>
+          <div class="faq-answer">
+            <p>Sangat aman. Di AristoBalance, manipulasi sendi dilakukan oleh praktisi berpengalaman yang memahami anatomi tubuh. Sebelum penanganan, kami melakukan tes gerakan fisik dasar untuk memastikan kondisi sendi aman untuk ditindak.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>Apakah saya harus mendaftar/reservasi terlebih dahulu?</span>
+            <i class="fa-solid fa-chevron-down faq-icon"></i>
+          </button>
+          <div class="faq-answer">
+            <p>Ya, sangat disarankan untuk melakukan reservasi jadwal via WhatsApp agar Anda tidak perlu mengantre lama di lokasi tempat praktik.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>Berapa kali terapi yang dibutuhkan sampai sembuh?</span>
+            <i class="fa-solid fa-chevron-down faq-icon"></i>
+          </button>
+          <div class="faq-answer">
+            <p>Untuk keluhan kram atau pegal biasa, 1 kali sesi (60 menit) sudah memberikan perubahan signifikan. Untuk kasus saraf kejepit atau cidera kronis, biasanya disarankan 2 - 3 sesi berkala.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>Apakah ada batasan usia untuk terapi ini?</span>
+            <i class="fa-solid fa-chevron-down faq-icon"></i>
+          </button>
+          <div class="faq-answer">
+            <p>Layanan kami dapat diakses oleh remaja, dewasa, hingga lansia. Penanganan disesuaikan dengan toleransi dan kekuatan fisik masing-masing pasien.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Location & Contact Info Section -->
+  <section class="section location-section" id="lokasi">
+    <div class="container">
+      <div class="location-grid">
+        <div class="loc-info">
+          <span class="section-subtitle">LOKASI PRAKTIK & OPERASIONAL</span>
+          <h2 class="section-title">Kunjungi AristoBalance Cimahi</h2>
+          <p class="section-desc">Tempat praktik kami bersih, tenang, dan mudah diakses di pusat Kota Cimahi.</p>
+
+          <div class="loc-details-list">
+            <div class="loc-detail-item">
+              <div class="loc-icon"><i class="fa-solid fa-location-dot"></i></div>
+              <div>
+                <h4>Alamat Lengkap</h4>
+                <p>Jl. Suryapakuan, Belakang Masjid At-Taqwa, RT.01/RW.14, Kapling PJKA No. 50, Kel. Padasuka, Kec. Cimahi Tengah, Kota Cimahi, Jawa Barat.</p>
+              </div>
+            </div>
+
+            <div class="loc-detail-item">
+              <div class="loc-icon"><i class="fa-solid fa-clock"></i></div>
+              <div>
+                <h4>Jam Operasional</h4>
+                <p>Senin – Minggu: <strong>09.00 – 22.00 WIB</strong></p>
+              </div>
+            </div>
+
+            <div class="loc-detail-item">
+              <div class="loc-icon"><i class="fa-brands fa-whatsapp"></i></div>
+              <div>
+                <h4>Kontak & WhatsApp Reservasi</h4>
+                <p>
+                  • 0821-1843-3016
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="loc-btn-group">
+            <a href="https://maps.google.com/?q=AristoBalance+Terapi+Otot+Tulang+Cimahi" target="_blank" rel="noopener" class="btn btn-primary">
+              <i class="fa-solid fa-diamond-turn-right"></i> Buka Rute Google Maps
+            </a>
+            <a href="https://wa.me/6282118433016?text=Halo%20AristoBalance,%20saya%20ingin%20tanya%20jadwal%20terapi" target="_blank" rel="noopener" class="btn btn-outline">
+              <i class="fa-brands fa-whatsapp"></i> Chat WhatsApp
+            </a>
+          </div>
+        </div>
+
+        <div class="loc-map-container">
+          <div class="map-card-wrapper">
+            <div class="map-placeholder">
+              <iframe 
+                title="Google Maps Location AristoBalance"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15844.75620942083!2d107.535!3d-6.878!2m3!1f0!2f0!3f0!2m3!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e68e441865a7d65%3A0x6b631d867c2df479!2sCimahi%2C%20Cimahi%20City%2C%20West%20Java!5e0!3m2!1sen!2sid!4v1700000000000!5m2!1sen!2sid" 
+                width="100%" 
+                height="100%" 
+                style="border:0; min-height: 380px; border-radius: 16px;" 
+                allowfullscreen="" 
+                loading="lazy">
+              </iframe>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container footer-container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <div class="brand-logo">
+            <img src="assets/images/logo.jpg" alt="AristoBalance Logo" class="brand-logo-img">
+            <span class="brand-name text-white">Aristo<span class="brand-accent">Balance</span></span>
+          </div>
+          <p class="footer-desc">Pusat Terapi Otot, Tulang & Sendi Spesialis Terpercaya di Cimahi. Mengembalikan Keseimbangan Postur & Kebebasan Gerak Tanpa Nyeri.</p>
+        </div>
+
+        <div class="footer-links">
+          <h4>Navigasi Cepat</h4>
+          <ul>
+            <li><a href="#layanan">Metode Terapi</a></li>
+            <li><a href="#faq">Tanya Jawab (FAQ)</a></li>
+            <li><a href="#testimoni">Testimoni Klien</a></li>
+            <li><a href="#lokasi">Lokasi & Jam Buka</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-links">
+          <h4>Kontak & Sosmed</h4>
+          <ul>
+            <li><a href="https://wa.me/6282118433016" target="_blank"><i class="fa-brands fa-whatsapp"></i> WA: 0821-1843-3016</a></li>
+            <li><a href="https://www.instagram.com/aristobalance_therapycenter/" target="_blank"><i class="fa-brands fa-instagram"></i> @aristobalance_therapycenter</a></li>
+            <li><a href="mailto:aristobalance@gmail.com"><i class="fa-regular fa-envelope"></i> aristobalance@gmail.com</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 AristoBalance Terapi Otot, Tulang & Sendi. All rights reserved.</p>
+        <p>Cimahi Tengah, Jawa Barat - Indonesia.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Floating Action Buttons -->
+  <div class="floating-actions">
+    <button class="float-btn float-wa" id="floatWaBtn" title="Chat WhatsApp">
+      <i class="fa-brands fa-whatsapp"></i>
+      <span class="float-tooltip">Chat Direct WA</span>
+    </button>
+
+    <button class="float-btn float-book" id="floatBookBtn" title="Booking Terapi">
+      <i class="fa-regular fa-calendar-check"></i>
+      <span class="float-tooltip">Reservasi Online</span>
+    </button>
+  </div>
+
+  <!-- Booking Modal -->
+  <div class="modal-overlay" id="bookingModal">
+    <div class="modal-card">
+      <button class="modal-close" id="closeBookingModal">&times;</button>
+      
+      <div class="modal-header">
+        <span class="badge-pill"><i class="fa-solid fa-bolt"></i> Fast Response WhatsApp</span>
+        <h2>Formulir Reservasi Terapi</h2>
+        <p>Isi data di bawah ini untuk mengirimkan permohonan jadwal ke pihak klinik AristoBalance.</p>
+      </div>
+
+      <form id="bookingForm" class="modal-form">
+        <div class="form-group">
+          <label for="bookName">Nama Lengkap *</label>
+          <input type="text" id="bookName" placeholder="Contoh: Andi Pratama" required>
+        </div>
+
+        <div class="form-group">
+          <label for="bookPhone">Nomor WhatsApp *</label>
+          <input type="tel" id="bookPhone" placeholder="Contoh: 081234567890" required>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="bookDate">Rencana Tanggal *</label>
+            <input type="date" id="bookDate" required>
+          </div>
+
+          <div class="form-group">
+            <label for="bookTime">Jam Penanganan *</label>
+            <div class="custom-select-wrapper" id="customSelectTime">
+              <input type="hidden" id="bookTime" name="bookTime" required>
+              <div class="custom-select-trigger">
+                <div class="select-trigger-info">
+                  <i class="fa-regular fa-clock select-icon"></i>
+                  <span class="select-trigger-text">Pilih Jam...</span>
+                </div>
+                <i class="fa-solid fa-chevron-down select-arrow"></i>
+              </div>
+              <div class="custom-options-menu">
+                <div class="custom-option" data-value="09:00 WIB" data-icon="fa-sun">
+                  <div class="opt-icon-box"><i class="fa-solid fa-sun"></i></div>
+                  <div class="opt-text">
+                    <span class="opt-title">09:00 WIB</span>
+                    <span class="opt-desc">Sesi Pagi — Segar & Rileks</span>
+                  </div>
+                </div>
+                <div class="custom-option" data-value="10:30 WIB" data-icon="fa-sun">
+                  <div class="opt-icon-box"><i class="fa-solid fa-sun"></i></div>
+                  <div class="opt-text">
+                    <span class="opt-title">10:30 WIB</span>
+                    <span class="opt-desc">Sesi Pagi</span>
+                  </div>
+                </div>
+                <div class="custom-option" data-value="13:00 WIB" data-icon="fa-cloud-sun">
+                  <div class="opt-icon-box"><i class="fa-solid fa-cloud-sun"></i></div>
+                  <div class="opt-text">
+                    <span class="opt-title">13:00 WIB</span>
+                    <span class="opt-desc">Sesi Siang</span>
+                  </div>
+                </div>
+                <div class="custom-option" data-value="14:30 WIB" data-icon="fa-cloud-sun">
+                  <div class="opt-icon-box"><i class="fa-solid fa-cloud-sun"></i></div>
+                  <div class="opt-text">
+                    <span class="opt-title">14:30 WIB</span>
+                    <span class="opt-desc">Sesi Siang</span>
+                  </div>
+                </div>
+                <div class="custom-option" data-value="16:00 WIB" data-icon="fa-cloud-sun">
+                  <div class="opt-icon-box"><i class="fa-solid fa-cloud-sun"></i></div>
+                  <div class="opt-text">
+                    <span class="opt-title">16:00 WIB</span>
+                    <span class="opt-desc">Sesi Sore</span>
+                  </div>
+                </div>
+                <div class="custom-option" data-value="19:00 WIB" data-icon="fa-moon">
+                  <div class="opt-icon-box"><i class="fa-solid fa-moon"></i></div>
+                  <div class="opt-text">
+                    <span class="opt-title">19:00 WIB</span>
+                    <span class="opt-desc">Sesi Malam — Paling Favorit</span>
+                  </div>
+                </div>
+                <div class="custom-option" data-value="20:30 WIB" data-icon="fa-moon">
+                  <div class="opt-icon-box"><i class="fa-solid fa-moon"></i></div>
+                  <div class="opt-text">
+                    <span class="opt-title">20:30 WIB</span>
+                    <span class="opt-desc">Sesi Malam</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="bookService">Layanan / Paket Terapi Utama</label>
+          <div class="custom-select-wrapper" id="customSelectService">
+            <input type="hidden" id="bookService" name="bookService" value="Terapi 1 Titik Keluhan">
+            <div class="custom-select-trigger">
+              <div class="select-trigger-info">
+                <i class="fa-solid fa-location-dot select-icon"></i>
+                <span class="select-trigger-text">Terapi 1 Titik Keluhan (Rp 150.000)</span>
+              </div>
+              <i class="fa-solid fa-chevron-down select-arrow"></i>
+            </div>
+            <div class="custom-options-menu">
+              <div class="custom-option selected" data-value="Terapi 1 Titik Keluhan" data-icon="fa-location-dot">
+                <div class="opt-icon-box"><i class="fa-solid fa-location-dot"></i></div>
+                <div class="opt-text">
+                  <span class="opt-title">Terapi 1 Titik Keluhan</span>
+                  <span class="opt-desc">Rp 150.000 — 60 Menit (6 Metode Complete)</span>
+                </div>
+              </div>
+              <div class="custom-option" data-value="Terapi 2 Titik Keluhan" data-icon="fa-map-pin">
+                <div class="opt-icon-box"><i class="fa-solid fa-map-pin"></i></div>
+                <div class="opt-text">
+                  <span class="opt-title">Terapi 2 Titik Keluhan</span>
+                  <span class="opt-desc">Rp 200.000 — 90 Menit (Intensif 2 Area)</span>
+                </div>
+              </div>
+              <div class="custom-option" data-value="Terapi 3 Titik Keluhan" data-icon="fa-layer-group">
+                <div class="opt-icon-box"><i class="fa-solid fa-layer-group"></i></div>
+                <div class="opt-text">
+                  <span class="opt-title">Terapi 3 Titik Keluhan</span>
+                  <span class="opt-desc">Rp 250.000 — 120 Menit (Total Body Rebalance)</span>
+                </div>
+              </div>
+              <div class="custom-option" data-value="Terapi Penanganan Saraf Kejepit (1)" data-icon="fa-bolt-lightning">
+                <div class="opt-icon-box"><i class="fa-solid fa-bolt-lightning"></i></div>
+                <div class="opt-text">
+                  <span class="opt-title">Terapi Penanganan Saraf Kejepit (1)</span>
+                  <span class="opt-desc">Rp 200.000 — 90 Menit (Spesialis Saraf HNP)</span>
+                </div>
+              </div>
+              <div class="custom-option" data-value="Terapi Penanganan Saraf Kejepit (2)" data-icon="fa-kit-medical">
+                <div class="opt-icon-box"><i class="fa-solid fa-kit-medical"></i></div>
+                <div class="opt-text">
+                  <span class="opt-title">Terapi Penanganan Saraf Kejepit (2)</span>
+                  <span class="opt-desc">Rp 250.000 — 120 Menit (Spesialis Saraf Total)</span>
+                </div>
+              </div>
+              <div class="custom-option" data-value="Bekam Injury & Cupping Therapy" data-icon="fa-flask-vial">
+                <div class="opt-icon-box"><i class="fa-solid fa-flask-vial"></i></div>
+                <div class="opt-text">
+                  <span class="opt-title">Bekam Injury & Cupping Therapy</span>
+                  <span class="opt-desc">Rp 150.000 — Bekam Medis Steril Detoks</span>
+                </div>
+              </div>
+              <div class="custom-option" data-value="Release Otot & Deep Tissue Massage" data-icon="fa-child-reaching">
+                <div class="opt-icon-box"><i class="fa-solid fa-child-reaching"></i></div>
+                <div class="opt-text">
+                  <span class="opt-title">Release Otot & Deep Tissue Massage</span>
+                  <span class="opt-desc">Rp 150.000 — Pijat Rilis Spasme Otot Dalam</span>
+                </div>
+              </div>
+              <div class="custom-option" data-value="Akupunktur Ashi Point (Injury)" data-icon="fa-needle">
+                <div class="opt-icon-box"><i class="fa-solid fa-needle"></i></div>
+                <div class="opt-text">
+                  <span class="opt-title">Akupunktur Ashi Point (Injury)</span>
+                  <span class="opt-desc">Rp 150.000 — Penusukan Titik Nyeri Presisi</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="bookNotes">Catatan Keluhan Singkat (Opsional)</label>
+          <textarea id="bookNotes" rows="3" placeholder="Contoh: Saraf kejepit di pinggang sudah 2 minggu, kaku saat bangun tidur..."></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-block btn-lg">
+          <i class="fa-brands fa-whatsapp"></i> Kirim Reservasi via WhatsApp
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Quiz Modal -->
+  <div class="modal-overlay" id="quizModal">
+    <div class="modal-card quiz-modal-card">
+      <button class="modal-close" id="closeQuizModal">&times;</button>
+      
+      <div id="quizStepContainer">
+        <!-- Dynamic quiz injected via JS -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Main JavaScript File -->
+  <script src="script.js"></script>
+</body>
+</html>
