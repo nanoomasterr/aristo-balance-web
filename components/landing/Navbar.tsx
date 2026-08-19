@@ -22,20 +22,23 @@ export default function Navbar({ onOpenBookingModal }: NavbarProps) {
   }, []);
 
   const navLinks = [
-    { name: 'Layanan', href: '#layanan' },
-    { name: 'Testimoni', href: '#testimoni' },
+    { name: 'Layanan', href: '/#layanan' },
+    { name: 'Testimoni', href: '/#testimoni' },
     { name: 'Lacak Jadwal', href: '/lacak-reservasi' },
-    { name: 'FAQ', href: '#faq' },
-    { name: 'Lokasi', href: '#lokasi' },
+    { name: 'FAQ', href: '/#faq' },
+    { name: 'Lokasi', href: '/#lokasi' },
   ];
-
 
   const handleBookingClick = () => {
     if (onOpenBookingModal) {
       onOpenBookingModal();
     } else {
       const el = document.getElementById('booking');
-      if (el) el.scrollIntoView({ behavior: 'smooth' });
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth' });
+      } else {
+        window.location.href = '/#booking';
+      }
     }
   };
 
@@ -71,13 +74,13 @@ export default function Navbar({ onOpenBookingModal }: NavbarProps) {
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center gap-8">
             {navLinks.map((link) => (
-              <a
+              <Link
                 key={link.name}
                 href={link.href}
                 className="text-sm font-semibold text-slate-700 hover:text-[#0F4C5C] transition-colors relative py-1"
               >
                 {link.name}
-              </a>
+              </Link>
             ))}
           </nav>
 
@@ -105,7 +108,7 @@ export default function Navbar({ onOpenBookingModal }: NavbarProps) {
             <button
               type="button"
               onClick={handleBookingClick}
-              className="inline-flex items-center gap-1 bg-[#0F4C5C] text-white text-xs font-bold px-3 py-1.5 rounded-lg shadow-xs"
+              className="inline-flex items-center gap-1 bg-[#0F4C5C] text-white text-xs font-bold px-3 py-1.5 rounded-lg shadow-xs cursor-pointer"
             >
               <Calendar className="w-3.5 h-3.5" />
               <span>Booking</span>
@@ -113,7 +116,7 @@ export default function Navbar({ onOpenBookingModal }: NavbarProps) {
 
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-2 rounded-lg text-slate-700 hover:bg-slate-100 transition"
+              className="p-2 rounded-lg text-slate-700 hover:bg-slate-100 transition cursor-pointer"
               aria-label="Toggle Menu"
             >
               {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6 text-[#0F4C5C]" />}
@@ -127,7 +130,7 @@ export default function Navbar({ onOpenBookingModal }: NavbarProps) {
         <div className="md:hidden bg-white border-b border-slate-200 shadow-xl px-6 py-5 transition-all">
           <div className="flex flex-col gap-3">
             {navLinks.map((link) => (
-              <a
+              <Link
                 key={link.name}
                 href={link.href}
                 onClick={() => setMobileMenuOpen(false)}
@@ -135,7 +138,7 @@ export default function Navbar({ onOpenBookingModal }: NavbarProps) {
               >
                 <span>{link.name}</span>
                 <ChevronRight className="w-4 h-4 text-slate-400" />
-              </a>
+              </Link>
             ))}
             <div className="pt-3 flex flex-col gap-2">
               <button

@@ -16,7 +16,11 @@ export default function FloatingActions({ onOpenBookingModal }: FloatingActionsP
       onOpenBookingModal();
     } else {
       const el = document.getElementById('booking');
-      if (el) el.scrollIntoView({ behavior: 'smooth' });
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth' });
+      } else {
+        window.location.href = '/#booking';
+      }
     }
   };
 

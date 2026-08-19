@@ -32,10 +32,11 @@ export default function Footer() {
               Navigasi Cepat
             </h4>
             <ul className="space-y-2 text-xs">
-              <li><a href="#layanan" className="hover:text-emerald-400 transition">Metode Terapi</a></li>
-              <li><a href="#faq" className="hover:text-emerald-400 transition">Tanya Jawab (FAQ)</a></li>
-              <li><a href="#testimoni" className="hover:text-emerald-400 transition">Testimoni Klien</a></li>
-              <li><a href="#lokasi" className="hover:text-emerald-400 transition">Lokasi & Jam Buka</a></li>
+              <li><Link href="/#layanan" className="hover:text-emerald-400 transition">Metode Terapi</Link></li>
+              <li><Link href="/lacak-reservasi" className="hover:text-emerald-400 transition">Lacak Jadwal</Link></li>
+              <li><Link href="/#faq" className="hover:text-emerald-400 transition">Tanya Jawab (FAQ)</Link></li>
+              <li><Link href="/#testimoni" className="hover:text-emerald-400 transition">Testimoni Klien</Link></li>
+              <li><Link href="/#lokasi" className="hover:text-emerald-400 transition">Lokasi & Jam Buka</Link></li>
               <li><Link href="/login" className="hover:text-emerald-400 transition text-slate-400">Portal Staf Admin</Link></li>
             </ul>
           </div>
