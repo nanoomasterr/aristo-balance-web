@@ -51,16 +51,16 @@ export default function AdminSidebar() {
   ];
 
   return (
-    <aside className="w-64 bg-slate-900 text-white flex flex-col justify-between shrink-0 min-h-screen border-r border-slate-800">
-      <div className="overflow-y-auto max-h-[calc(100vh-80px)]">
+    <aside className="w-64 bg-slate-900 text-white flex flex-col justify-between shrink-0 h-screen sticky top-0 border-r border-slate-800 select-none z-30">
+      <div className="flex-1 flex flex-col min-h-0 overflow-y-auto [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
         {/* Header Branding */}
-        <div className="p-6 border-b border-slate-800">
+        <div className="p-5 border-b border-slate-800 shrink-0">
           <Link href="/admin" className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-xl bg-[#008080] text-white flex items-center justify-center font-bold shadow-md">
+            <div className="w-9 h-9 rounded-xl bg-[#008080] text-white flex items-center justify-center font-bold shadow-md shrink-0">
               <Activity className="w-5 h-5" />
             </div>
             <div>
-              <span className="text-sm font-bold tracking-tight text-white block">
+              <span className="text-sm font-bold tracking-tight text-white block leading-tight">
                 ARISTO BALANCE
               </span>
               <span className="text-[10px] font-semibold text-emerald-400 uppercase tracking-widest block">
@@ -71,52 +71,54 @@ export default function AdminSidebar() {
         </div>
 
         {/* Navigation Links Grouped */}
-        <div className="p-4 space-y-6">
+        <div className="p-3.5 space-y-4 flex-1">
           {navGroups.map((group) => (
-            <div key={group.title} className="space-y-1.5">
-              <div className="px-3 text-[10px] font-bold uppercase tracking-wider text-slate-500">
+            <div key={group.title} className="space-y-1">
+              <div className="px-3 text-[9px] font-bold uppercase tracking-wider text-slate-500">
                 {group.title}
               </div>
 
-              {group.items.map((item) => {
-                const Icon = item.icon;
-                const isActive = pathname === item.href;
+              <div className="space-y-0.5">
+                {group.items.map((item) => {
+                  const Icon = item.icon;
+                  const isActive = pathname === item.href;
 
-                return (
-                  <Link
-                    key={item.name}
-                    href={item.href}
-                    className={`flex items-center gap-3 px-3.5 py-2 rounded-xl text-xs font-semibold transition-all ${
-                      isActive
-                        ? 'bg-[#0F4C5C] text-white shadow-md'
-                        : 'text-slate-400 hover:text-white hover:bg-slate-800/80'
-                    }`}
-                  >
-                    <Icon className={`w-4 h-4 ${isActive ? 'text-emerald-300' : 'text-slate-400'}`} />
-                    <span>{item.name}</span>
-                  </Link>
-                );
-              })}
+                  return (
+                    <Link
+                      key={item.name}
+                      href={item.href}
+                      className={`flex items-center gap-2.5 px-3 py-1.5 rounded-xl text-xs font-semibold transition-all ${
+                        isActive
+                          ? 'bg-[#0F4C5C] text-white shadow-sm'
+                          : 'text-slate-400 hover:text-white hover:bg-slate-800/70'
+                      }`}
+                    >
+                      <Icon className={`w-4 h-4 shrink-0 ${isActive ? 'text-emerald-300' : 'text-slate-400'}`} />
+                      <span className="truncate">{item.name}</span>
+                    </Link>
+                  );
+                })}
+              </div>
             </div>
           ))}
         </div>
       </div>
 
       {/* Footer / Account / Logout */}
-      <div className="p-4 border-t border-slate-800 space-y-2">
+      <div className="p-3.5 border-t border-slate-800 space-y-1.5 shrink-0 bg-slate-900">
         <Link
           href="/"
           target="_blank"
-          className="flex items-center justify-between px-3.5 py-2 rounded-xl text-xs font-medium text-slate-400 hover:text-white hover:bg-slate-800 transition-colors"
+          className="flex items-center justify-between px-3 py-1.5 rounded-xl text-xs font-medium text-slate-400 hover:text-white hover:bg-slate-800 transition-colors"
         >
-          <span>Lihat Website Publik</span>
+          <span>Lihat Website</span>
           <ExternalLink className="w-3.5 h-3.5" />
         </Link>
 
         <form action={logoutAction}>
           <button
             type="submit"
-            className="w-full flex items-center gap-3 px-3.5 py-2 rounded-xl text-xs font-semibold text-rose-400 hover:bg-rose-950/40 hover:text-rose-300 transition-colors cursor-pointer"
+            className="w-full flex items-center gap-2.5 px-3 py-1.5 rounded-xl text-xs font-semibold text-rose-400 hover:bg-rose-950/40 hover:text-rose-300 transition-colors cursor-pointer"
           >
             <LogOut className="w-4 h-4" />
             <span>Keluar Sesi</span>
