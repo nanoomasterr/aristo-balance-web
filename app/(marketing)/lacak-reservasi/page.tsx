@@ -263,17 +263,17 @@ function TrackingContent() {
 
                     {/* Stepper Flow */}
                     <div className="py-2">
-                      <div className="grid grid-cols-4 gap-2 text-center text-xs">
-                        <div className="space-y-1.5">
-                          <div className="w-7 h-7 rounded-full bg-[#0F4C5C] text-white flex items-center justify-center font-bold text-xs mx-auto">
+                      <div className="grid grid-cols-4 gap-1.5 sm:gap-2 text-center text-xs">
+                        <div className="space-y-1 sm:space-y-1.5">
+                          <div className="w-6 h-6 sm:w-7 sm:h-7 rounded-full bg-[#0F4C5C] text-white flex items-center justify-center font-bold text-[10px] sm:text-xs mx-auto">
                             1
                           </div>
-                          <span className="font-semibold text-slate-800 text-[11px] block">Reservasi Dibuat</span>
+                          <span className="font-semibold text-slate-800 text-[9px] sm:text-[11px] block leading-tight">Reservasi Dibuat</span>
                         </div>
 
-                        <div className="space-y-1.5">
+                        <div className="space-y-1 sm:space-y-1.5">
                           <div
-                            className={`w-7 h-7 rounded-full flex items-center justify-center font-bold text-xs mx-auto ${
+                            className={`w-6 h-6 sm:w-7 sm:h-7 rounded-full flex items-center justify-center font-bold text-[10px] sm:text-xs mx-auto ${
                               booking.status !== 'pending' && booking.status !== 'cancelled'
                                 ? 'bg-[#0F4C5C] text-white'
                                 : 'bg-slate-100 text-slate-400'
@@ -282,7 +282,7 @@ function TrackingContent() {
                             2
                           </div>
                           <span
-                            className={`text-[11px] block ${
+                            className={`text-[9px] sm:text-[11px] block leading-tight ${
                               booking.status !== 'pending' && booking.status !== 'cancelled'
                                 ? 'font-semibold text-slate-800'
                                 : 'text-slate-400'
@@ -292,9 +292,9 @@ function TrackingContent() {
                           </span>
                         </div>
 
-                        <div className="space-y-1.5">
+                        <div className="space-y-1 sm:space-y-1.5">
                           <div
-                            className={`w-7 h-7 rounded-full flex items-center justify-center font-bold text-xs mx-auto ${
+                            className={`w-6 h-6 sm:w-7 sm:h-7 rounded-full flex items-center justify-center font-bold text-[10px] sm:text-xs mx-auto ${
                               booking.therapist_id
                                 ? 'bg-[#0F4C5C] text-white'
                                 : 'bg-slate-100 text-slate-400'
@@ -303,7 +303,7 @@ function TrackingContent() {
                             3
                           </div>
                           <span
-                            className={`text-[11px] block ${
+                            className={`text-[9px] sm:text-[11px] block leading-tight ${
                               booking.therapist_id
                                 ? 'font-semibold text-slate-800'
                                 : 'text-slate-400'
@@ -313,9 +313,9 @@ function TrackingContent() {
                           </span>
                         </div>
 
-                        <div className="space-y-1.5">
+                        <div className="space-y-1 sm:space-y-1.5">
                           <div
-                            className={`w-7 h-7 rounded-full flex items-center justify-center font-bold text-xs mx-auto ${
+                            className={`w-6 h-6 sm:w-7 sm:h-7 rounded-full flex items-center justify-center font-bold text-[10px] sm:text-xs mx-auto ${
                               booking.status === 'completed'
                                 ? 'bg-emerald-600 text-white'
                                 : 'bg-slate-100 text-slate-400'
@@ -324,7 +324,7 @@ function TrackingContent() {
                             4
                           </div>
                           <span
-                            className={`text-[11px] block ${
+                            className={`text-[9px] sm:text-[11px] block leading-tight ${
                               booking.status === 'completed'
                                 ? 'font-semibold text-emerald-800'
                                 : 'text-slate-400'

@@ -103,26 +103,26 @@ export default function HeroSection({ onOpenBooking }: HeroSectionProps) {
               </div>
 
               {/* Floating Glass Badge Top Right */}
-              <div className="absolute -top-5 -right-4 sm:-right-6 bg-white/95 backdrop-blur-md rounded-2xl p-3.5 shadow-xl border border-slate-200/80 flex items-center gap-3 animate-bounce-subtle">
-                <div className="w-10 h-10 rounded-xl bg-amber-100 text-amber-600 flex items-center justify-center font-bold">
-                  <Zap className="w-5 h-5 fill-amber-500" />
+              <div className="absolute -top-3 -right-2 sm:-top-5 sm:-right-6 bg-white/95 backdrop-blur-md rounded-2xl p-2.5 sm:p-3.5 shadow-xl border border-slate-200/80 flex items-center gap-2.5 sm:gap-3 animate-bounce-subtle z-10">
+                <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-xl bg-amber-100 text-amber-600 flex items-center justify-center font-bold">
+                  <Zap className="w-4 h-4 sm:w-5 sm:h-5 fill-amber-500" />
                 </div>
                 <div>
-                  <div className="text-base font-extrabold text-slate-900">98%</div>
-                  <div className="text-[10px] font-semibold text-slate-500 max-w-[120px] leading-tight">
+                  <div className="text-sm sm:text-base font-extrabold text-slate-900">98%</div>
+                  <div className="text-[9px] sm:text-[10px] font-semibold text-slate-500 max-w-[110px] sm:max-w-[120px] leading-tight">
                     Klien Mengaku Nyeri Berkurang Instan
                   </div>
                 </div>
               </div>
 
               {/* Floating Glass Badge Bottom Left */}
-              <div className="absolute -bottom-5 -left-4 sm:-left-6 bg-white/95 backdrop-blur-md rounded-2xl p-3.5 shadow-xl border border-slate-200/80 flex items-center gap-3">
-                <div className="w-10 h-10 rounded-xl bg-emerald-100 text-emerald-700 flex items-center justify-center font-bold">
-                  <UserCheck className="w-5 h-5" />
+              <div className="absolute -bottom-3 -left-2 sm:-bottom-5 sm:-left-6 bg-white/95 backdrop-blur-md rounded-2xl p-2.5 sm:p-3.5 shadow-xl border border-slate-200/80 flex items-center gap-2.5 sm:gap-3 z-10">
+                <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-xl bg-emerald-100 text-emerald-700 flex items-center justify-center font-bold">
+                  <UserCheck className="w-4 h-4 sm:w-5 sm:h-5" />
                 </div>
                 <div>
-                  <div className="text-base font-extrabold text-[#0F4C5C]">3,500+</div>
-                  <div className="text-[10px] font-semibold text-slate-500 max-w-[120px] leading-tight">
+                  <div className="text-sm sm:text-base font-extrabold text-[#0F4C5C]">3,500+</div>
+                  <div className="text-[9px] sm:text-[10px] font-semibold text-slate-500 max-w-[110px] sm:max-w-[120px] leading-tight">
                     Penanganan Berhasil di Cimahi & Bandung
                   </div>
                 </div>
