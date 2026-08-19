@@ -20,12 +20,7 @@ import {
   Sparkles,
 } from 'lucide-react';
 
-interface AdminSidebarProps {
-  isOpen?: boolean;
-  onClose?: () => void;
-}
-
-export default function AdminSidebar({ isOpen = false, onClose }: AdminSidebarProps) {
+export default function AdminSidebar() {
   const pathname = usePathname();
 
   const navGroups = [
@@ -55,12 +50,12 @@ export default function AdminSidebar({ isOpen = false, onClose }: AdminSidebarPr
     },
   ];
 
-  const sidebarContent = (
+  return (
     <aside className="w-64 bg-slate-900 text-white flex flex-col justify-between shrink-0 h-full border-r border-slate-800 select-none z-30 overflow-hidden">
       <div className="flex-1 flex flex-col min-h-0 overflow-y-auto [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
         {/* Header Branding */}
-        <div className="p-5 border-b border-slate-800 shrink-0 flex items-center justify-between">
-          <Link href="/admin" onClick={onClose} className="flex items-center gap-3">
+        <div className="p-5 border-b border-slate-800 shrink-0">
+          <Link href="/admin" className="flex items-center gap-3">
             <div className="w-9 h-9 rounded-xl bg-[#008080] text-white flex items-center justify-center font-bold shadow-md shrink-0">
               <Activity className="w-5 h-5" />
             </div>
@@ -73,17 +68,6 @@ export default function AdminSidebar({ isOpen = false, onClose }: AdminSidebarPr
               </span>
             </div>
           </Link>
-
-          {/* Mobile Close Button */}
-          {onClose && (
-            <button
-              onClick={onClose}
-              className="md:hidden p-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 transition"
-              aria-label="Tutup Menu"
-            >
-              <LogOut className="w-4 h-4 rotate-180" />
-            </button>
-          )}
         </div>
 
         {/* Navigation Links Grouped */}
@@ -103,7 +87,6 @@ export default function AdminSidebar({ isOpen = false, onClose }: AdminSidebarPr
                     <Link
                       key={item.name}
                       href={item.href}
-                      onClick={onClose}
                       className={`flex items-center gap-2.5 px-3 py-1.5 rounded-xl text-xs font-semibold transition-all ${
                         isActive
                           ? 'bg-[#0F4C5C] text-white shadow-sm'
@@ -143,28 +126,6 @@ export default function AdminSidebar({ isOpen = false, onClose }: AdminSidebarPr
         </form>
       </div>
     </aside>
-  );
-
-  return (
-    <>
-      {/* Desktop Permanent Sidebar */}
-      <div className="hidden md:flex shrink-0 h-full">
-        {sidebarContent}
-      </div>
-
-      {/* Mobile Slide-Over Drawer with Backdrop */}
-      {isOpen && (
-        <div className="fixed inset-0 z-50 md:hidden flex animate-in fade-in duration-200">
-          <div
-            className="fixed inset-0 bg-slate-950/70 backdrop-blur-xs transition-opacity"
-            onClick={onClose}
-          />
-          <div className="relative flex-1 flex flex-col max-w-xs w-full bg-slate-900 shadow-2xl z-10 animate-in slide-in-from-left duration-300">
-            {sidebarContent}
-          </div>
-        </div>
-      )}
-    </>
   );
 }
 
