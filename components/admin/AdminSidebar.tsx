@@ -51,7 +51,7 @@ export default function AdminSidebar() {
   ];
 
   return (
-    <aside className="w-64 bg-slate-900 text-white flex flex-col justify-between shrink-0 h-screen sticky top-0 border-r border-slate-800 select-none z-30">
+    <aside className="w-64 bg-slate-900 text-white flex flex-col justify-between shrink-0 h-full border-r border-slate-800 select-none z-30 overflow-hidden">
       <div className="flex-1 flex flex-col min-h-0 overflow-y-auto [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
         {/* Header Branding */}
         <div className="p-5 border-b border-slate-800 shrink-0">

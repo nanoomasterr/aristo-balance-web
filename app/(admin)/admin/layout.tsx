@@ -7,10 +7,10 @@ export default function AdminLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div className="min-h-screen flex bg-[#F8FAFC]">
+    <div className="h-screen w-screen flex overflow-hidden bg-[#F8FAFC]">
       <AdminSidebar />
-      <div className="flex-1 flex flex-col min-w-0 overflow-y-auto">
-        <header className="h-16 bg-white border-b border-slate-200/80 px-8 flex items-center justify-between sticky top-0 z-20">
+      <div className="flex-1 flex flex-col min-w-0 h-full overflow-y-auto">
+        <header className="h-16 bg-white border-b border-slate-200/80 px-8 flex items-center justify-between sticky top-0 z-20 shrink-0 shadow-2xs">
           <div>
             <span className="text-xs font-semibold text-slate-400">Admin Control Center</span>
             <h1 className="text-sm font-bold text-slate-800">Aristo Balance Therapy Center</h1>
