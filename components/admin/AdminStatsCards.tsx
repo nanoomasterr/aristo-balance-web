@@ -1,30 +1,37 @@
 import React from 'react';
-import { Booking, Service } from '@/lib/types';
+import { Booking, Service, Therapist } from '@/lib/types';
 import { formatCurrency } from '@/lib/utils';
-import { Calendar, Clock, CheckCircle2, DollarSign, Stethoscope } from 'lucide-react';
+import { Calendar, Clock, CheckCircle2, DollarSign, Stethoscope, Activity, TrendingUp } from 'lucide-react';
 
 interface AdminStatsCardsProps {
   bookings: Booking[];
   services: Service[];
+  therapists?: Therapist[];
 }
 
-export default function AdminStatsCards({ bookings, services }: AdminStatsCardsProps) {
+export default function AdminStatsCards({ bookings, services, therapists = [] }: AdminStatsCardsProps) {
   const totalBookings = bookings.length;
   const pendingCount = bookings.filter((b) => b.status === 'pending').length;
   const confirmedCount = bookings.filter((b) => b.status === 'confirmed').length;
-  const activeServicesCount = services.filter((s) => s.is_active).length;
+  const completedCount = bookings.filter((b) => b.status === 'completed').length;
 
-  const estimatedRevenue = bookings.reduce((sum, b) => {
-    if (b.status === 'cancelled') return sum;
-    const srv = b.service || services.find((s) => s.id === b.service_id);
-    return sum + (srv?.price || 0);
+  // Realized revenue: sum of paid_in_clinic full prices + dp_amount from dp_paid
+  const realizedRevenue = bookings.reduce((sum, b) => {
+    if (b.payment_status === 'paid_in_clinic') {
+      const srv = b.service || services.find((s) => s.id === b.service_id);
+      return sum + (srv?.price || 0);
+    }
+    if (b.payment_status === 'dp_paid') {
+      return sum + (b.dp_amount || 50000);
+    }
+    return sum;
   }, 0);
 
   const stats = [
     {
       label: 'Total Reservasi',
       value: totalBookings.toString(),
-      subtext: `${confirmedCount} terkonfirmasi`,
+      subtext: `${confirmedCount} aktif • ${completedCount} selesai`,
       icon: Calendar,
       color: 'bg-teal-50 text-[#0F4C5C] border-teal-100',
     },
@@ -36,17 +43,17 @@ export default function AdminStatsCards({ bookings, services }: AdminStatsCardsP
       color: 'bg-amber-50 text-amber-700 border-amber-200',
     },
     {
-      label: 'Layanan Aktif',
-      value: activeServicesCount.toString(),
-      subtext: 'Program terapi tersedia di website',
-      icon: Stethoscope,
+      label: 'Sesi Selesai (Completed)',
+      value: completedCount.toString(),
+      subtext: 'Rekam terapi tercatat',
+      icon: Activity,
       color: 'bg-blue-50 text-blue-700 border-blue-200',
     },
     {
-      label: 'Estimasi Nilai Terapi',
-      value: formatCurrency(estimatedRevenue),
-      subtext: 'Berdasarkan sesi non-batal',
-      icon: DollarSign,
+      label: 'Omzet Terealisasi',
+      value: formatCurrency(realizedRevenue),
+      subtext: 'Penerimaan QRIS, DP & Tunai',
+      icon: TrendingUp,
       color: 'bg-emerald-50 text-emerald-700 border-emerald-200',
     },
   ];
@@ -79,3 +86,4 @@ export default function AdminStatsCards({ bookings, services }: AdminStatsCardsP
     </div>
   );
 }
+

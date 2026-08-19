@@ -24,9 +24,11 @@ export default function Navbar({ onOpenBookingModal }: NavbarProps) {
   const navLinks = [
     { name: 'Layanan', href: '#layanan' },
     { name: 'Testimoni', href: '#testimoni' },
+    { name: 'Lacak Jadwal', href: '/lacak-reservasi' },
     { name: 'FAQ', href: '#faq' },
     { name: 'Lokasi', href: '#lokasi' },
   ];
+
 
   const handleBookingClick = () => {
     if (onOpenBookingModal) {

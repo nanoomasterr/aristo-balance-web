@@ -1,8 +1,9 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import Link from 'next/link';
 import { Service } from '@/lib/types';
-import { createBookingAction } from '@/lib/actions/bookings';
+import { createBookingAction, checkSlotAvailabilityAction } from '@/lib/actions/bookings';
 import { generateWhatsAppBookingUrl, formatCurrency } from '@/lib/utils';
 import {
   Calendar as CalendarIcon,
@@ -19,11 +20,21 @@ import {
   Sun,
   CloudSun,
   Moon,
+  Search,
+  Check,
+  Ban,
 } from 'lucide-react';
 
 interface BookingFormProps {
   services: Service[];
   initialSelectedServiceName?: string;
+}
+
+interface SlotState {
+  time: string;
+  label: string;
+  isAvailable: boolean;
+  remainingQuota?: number;
 }
 
 export default function BookingForm({
@@ -35,9 +46,17 @@ export default function BookingForm({
   const [selectedServiceId, setSelectedServiceId] = useState<string>(
     initialService?.id || (services[0]?.id ?? '')
   );
+
+  const todayStr = new Date().toISOString().split('T')[0];
+  const [selectedDate, setSelectedDate] = useState<string>(todayStr);
+  const [selectedTime, setSelectedTime] = useState<string>('09:00 WIB');
+  const [slotStates, setSlotStates] = useState<SlotState[]>([]);
+  const [isLoadingSlots, setIsLoadingSlots] = useState(false);
+
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const [bookingSuccessData, setBookingSuccessData] = useState<{
+    bookingCode: string;
     patientName: string;
     patientPhone: string;
     serviceName: string;
@@ -46,8 +65,8 @@ export default function BookingForm({
     notes?: string;
   } | null>(null);
 
-  // Time Slots with descriptions from Balance Reference
-  const timeSlots = [
+  // Time Slots definition with icons
+  const baseTimeSlots = [
     { time: '09:00 WIB', desc: 'Sesi Pagi — Segar & Rileks', icon: Sun },
     { time: '10:30 WIB', desc: 'Sesi Pagi', icon: Sun },
     { time: '13:00 WIB', desc: 'Sesi Siang', icon: CloudSun },
@@ -57,9 +76,39 @@ export default function BookingForm({
     { time: '20:30 WIB', desc: 'Sesi Malam', icon: Moon },
   ];
 
-  const todayStr = new Date().toISOString().split('T')[0];
   const selectedService =
     services.find((s) => s.id === selectedServiceId) || services[0];
+
+  // Fetch slot availability whenever date changes
+  useEffect(() => {
+    async function fetchSlots() {
+      if (!selectedDate) return;
+      setIsLoadingSlots(true);
+      try {
+        const res = await checkSlotAvailabilityAction(
+          selectedDate,
+          selectedService?.duration_minutes || 60
+        );
+        if (res.success && res.slots) {
+          setSlotStates(res.slots);
+          // If current selected time is not available, auto-select first available slot
+          const currentSlot = res.slots.find((s) => s.time === selectedTime);
+          if (currentSlot && !currentSlot.isAvailable) {
+            const firstAvailable = res.slots.find((s) => s.isAvailable);
+            if (firstAvailable) {
+              setSelectedTime(firstAvailable.time);
+            }
+          }
+        }
+      } catch (err) {
+        console.error('Error checking slots:', err);
+      } finally {
+        setIsLoadingSlots(false);
+      }
+    }
+
+    fetchSlots();
+  }, [selectedDate, selectedServiceId]);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -79,8 +128,9 @@ export default function BookingForm({
 
     try {
       const res = await createBookingAction(formData);
-      if (res.success) {
+      if (res.success && res.bookingCode) {
         setBookingSuccessData({
+          bookingCode: res.bookingCode,
           patientName,
           patientPhone,
           serviceName: chosenService?.name || 'Terapi Otot, Tulang & Sendi',
@@ -105,7 +155,7 @@ export default function BookingForm({
         <div className="text-center max-w-2xl mx-auto mb-14 space-y-3">
           <div className="inline-flex items-center gap-2 bg-[#E8F5E9] text-[#0F4C5C] px-3.5 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider">
             <Sparkles className="w-3.5 h-3.5 text-emerald-600" />
-            Fast Response WhatsApp
+            Fast Response WhatsApp & Live Slot
           </div>
 
           <h2 className="text-3xl sm:text-4xl font-black text-slate-900 tracking-tight">
@@ -125,6 +175,9 @@ export default function BookingForm({
             </div>
 
             <div>
+              <div className="inline-block bg-[#0F4C5C] text-white text-xs font-mono font-bold px-3 py-1 rounded-full mb-2">
+                Kode Booking: {bookingSuccessData.bookingCode}
+              </div>
               <h3 className="text-2xl font-bold text-slate-900">Reservasi Siap Dikirim!</h3>
               <p className="text-slate-600 text-xs mt-1">
                 Data Anda telah terinput. Silakan klik tombol di bawah untuk membuka WhatsApp klinik dan mengirim konfirmasi instan.
@@ -132,6 +185,10 @@ export default function BookingForm({
             </div>
 
             <div className="bg-white rounded-2xl p-4 border border-slate-200 text-left space-y-2 text-xs">
+              <div className="flex justify-between py-1 border-b border-slate-100">
+                <span className="text-slate-500">Kode Booking:</span>
+                <span className="font-mono font-bold text-[#0F4C5C]">{bookingSuccessData.bookingCode}</span>
+              </div>
               <div className="flex justify-between py-1 border-b border-slate-100">
                 <span className="text-slate-500">Nama:</span>
                 <span className="font-bold text-slate-900">{bookingSuccessData.patientName}</span>
@@ -156,6 +213,7 @@ export default function BookingForm({
               <a
                 href={generateWhatsAppBookingUrl({
                   clinicPhone: '6282118433016',
+                  bookingCode: bookingSuccessData.bookingCode,
                   patientName: bookingSuccessData.patientName,
                   patientPhone: bookingSuccessData.patientPhone,
                   serviceName: bookingSuccessData.serviceName,
@@ -171,13 +229,25 @@ export default function BookingForm({
                 <span>Kirim Reservasi via WhatsApp</span>
               </a>
 
-              <button
-                type="button"
-                onClick={() => setBookingSuccessData(null)}
-                className="text-xs font-semibold text-slate-500 hover:text-slate-800 underline py-1"
-              >
-                Buat Formulir Baru
-              </button>
+              <div className="flex items-center justify-center gap-4 text-xs">
+                <Link
+                  href={`/lacak-reservasi?q=${encodeURIComponent(bookingSuccessData.bookingCode)}`}
+                  className="font-bold text-[#0F4C5C] hover:underline flex items-center gap-1"
+                >
+                  <Search className="w-3.5 h-3.5" />
+                  <span>Lacak Status di Web</span>
+                </Link>
+
+                <span className="text-slate-300">•</span>
+
+                <button
+                  type="button"
+                  onClick={() => setBookingSuccessData(null)}
+                  className="font-semibold text-slate-500 hover:text-slate-800 underline py-1"
+                >
+                  Buat Formulir Baru
+                </button>
+              </div>
             </div>
           </div>
         ) : (
@@ -238,9 +308,10 @@ export default function BookingForm({
                       type="date"
                       name="booking_date"
                       min={todayStr}
-                      defaultValue={todayStr}
+                      value={selectedDate}
+                      onChange={(e) => setSelectedDate(e.target.value)}
                       required
-                      className="w-full rounded-xl border border-slate-300 bg-white pl-10 pr-4 py-2.5 text-xs sm:text-sm text-slate-800 focus:border-[#0F4C5C] focus:ring-2 focus:ring-[#0F4C5C]/20 outline-none transition"
+                      className="w-full rounded-xl border border-slate-300 bg-white pl-10 pr-4 py-2.5 text-xs sm:text-sm text-slate-800 focus:border-[#0F4C5C] focus:ring-2 focus:ring-[#0F4C5C]/20 outline-none transition cursor-pointer"
                     />
                   </div>
                 </div>
@@ -254,7 +325,7 @@ export default function BookingForm({
                     value={selectedServiceId}
                     onChange={(e) => setSelectedServiceId(e.target.value)}
                     required
-                    className="w-full rounded-xl border border-slate-300 bg-white px-3.5 py-2.5 text-xs sm:text-sm text-slate-800 focus:border-[#0F4C5C] focus:ring-2 focus:ring-[#0F4C5C]/20 outline-none transition"
+                    className="w-full rounded-xl border border-slate-300 bg-white px-3.5 py-2.5 text-xs sm:text-sm text-slate-800 focus:border-[#0F4C5C] focus:ring-2 focus:ring-[#0F4C5C]/20 outline-none transition cursor-pointer"
                   >
                     {services.map((srv) => (
                       <option key={srv.id} value={srv.id}>
@@ -265,33 +336,70 @@ export default function BookingForm({
                 </div>
               </div>
 
-              {/* Time Slots (7 options) */}
+              {/* Time Slots (Dynamic Availability Check) */}
               <div>
-                <label className="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-2">
-                  Jam Penanganan <span className="text-rose-500">*</span>
-                </label>
+                <div className="flex items-center justify-between mb-2">
+                  <label className="block text-xs font-bold uppercase tracking-wider text-slate-700">
+                    Jam Penanganan <span className="text-rose-500">*</span>
+                  </label>
+                  {isLoadingSlots && (
+                    <span className="text-[11px] text-slate-400 flex items-center gap-1">
+                      <Loader2 className="w-3 h-3 animate-spin text-[#0F4C5C]" />
+                      <span>Mengecek ketersediaan kuota...</span>
+                    </span>
+                  )}
+                </div>
+
                 <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
-                  {timeSlots.map((slot, idx) => {
+                  {baseTimeSlots.map((slot) => {
                     const Icon = slot.icon;
+                    const slotInfo = slotStates.find((s) => s.time === slot.time);
+                    const isAvailable = slotInfo ? slotInfo.isAvailable : true;
+                    const remainingQuota = slotInfo?.remainingQuota;
+
                     return (
                       <label
                         key={slot.time}
-                        className="flex flex-col p-2.5 rounded-xl border border-slate-300 bg-white hover:border-[#0F4C5C] cursor-pointer text-slate-700 has-[:checked]:bg-[#0F4C5C] has-[:checked]:text-white has-[:checked]:border-[#0F4C5C] transition group"
+                        className={`flex flex-col p-2.5 rounded-xl border transition group relative ${
+                          isAvailable
+                            ? 'border-slate-300 bg-white hover:border-[#0F4C5C] cursor-pointer text-slate-700 has-[:checked]:bg-[#0F4C5C] has-[:checked]:text-white has-[:checked]:border-[#0F4C5C]'
+                            : 'border-slate-200 bg-slate-100/80 text-slate-400 cursor-not-allowed opacity-60'
+                        }`}
                       >
                         <input
                           type="radio"
                           name="booking_time"
                           value={slot.time}
-                          defaultChecked={idx === 0}
+                          disabled={!isAvailable}
+                          checked={selectedTime === slot.time && isAvailable}
+                          onChange={() => setSelectedTime(slot.time)}
                           required
                           className="sr-only"
                         />
-                        <div className="flex items-center gap-1.5">
-                          <Icon className="w-3.5 h-3.5 group-has-[:checked]:text-emerald-300 text-[#008080]" />
-                          <span className="font-bold text-xs">{slot.time}</span>
+                        <div className="flex items-center justify-between">
+                          <div className="flex items-center gap-1.5">
+                            <Icon
+                              className={`w-3.5 h-3.5 ${
+                                isAvailable
+                                  ? 'group-has-[:checked]:text-emerald-300 text-[#008080]'
+                                  : 'text-slate-400'
+                              }`}
+                            />
+                            <span className="font-bold text-xs">{slot.time}</span>
+                          </div>
+
+                          {!isAvailable ? (
+                            <span className="text-[9px] font-bold uppercase tracking-wider text-rose-600 bg-rose-50 px-1.5 py-0.5 rounded">
+                              Penuh
+                            </span>
+                          ) : remainingQuota !== undefined && remainingQuota <= 1 ? (
+                            <span className="text-[9px] font-semibold text-amber-700 bg-amber-50 group-has-[:checked]:bg-white/20 group-has-[:checked]:text-amber-200 px-1.5 py-0.5 rounded">
+                              Sisa 1
+                            </span>
+                          ) : null}
                         </div>
                         <span className="text-[10px] mt-0.5 opacity-80 line-clamp-1">
-                          {slot.desc}
+                          {isAvailable ? slot.desc : 'Slot telah terisi'}
                         </span>
                       </label>
                     );
@@ -340,3 +448,4 @@ export default function BookingForm({
     </section>
   );
 }
+
