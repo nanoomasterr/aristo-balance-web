@@ -1,6 +1,8 @@
-# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+# ========================================================
+# .gitignore - Aristo Balance Therapy Center Web App
+# ========================================================
 
-# dependencies
+# 1. Dependensi Node.js (Folder besar yang di-install via npm/yarn)
 /node_modules
 /.pnp
 .pnp.*
@@ -10,33 +12,29 @@
 !.yarn/releases
 !.yarn/versions
 
-# testing
-/coverage
-
-# next.js
+# 2. Folder Cache & Output Build Next.js
 /.next/
 /out/
+/build/
+/coverage/
+*.tsbuildinfo
+next-env.d.ts
 
-# production
-/build
+# 3. Kredensial Rahasia & Environment Variables (JANGAN DI-PUSH KE GITHUB)
+.env*
+!.env.example
 
-# misc
-.DS_Store
-*.pem
+# 4. Folder Deployment Lokal Vercel
+.vercel/
 
-# debug
+# 5. File Log & Debugging
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 .pnpm-debug.log*
 
-# env files (can opt-in for committing if needed)
-.env*
-!.env.example
+# 6. File Sistem Operasi
+.DS_Store
+Thumbs.db
+*.pem
 
-# vercel
-.vercel
-
-# typescript
-*.tsbuildinfo
-next-env.d.ts
